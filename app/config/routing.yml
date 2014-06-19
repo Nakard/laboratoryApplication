@@ -1,0 +1,4 @@
+laboratory_management:
+    resource: "@LaboratoryManagementBundle/Resources/config/routing.yml"
+    prefix:   /
+

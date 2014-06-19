@@ -1,0 +1,7 @@
+parameters:
+#    laboratory_management.example.class: Laboratory\Bundle\ManagementBundle\Example
+
+services:
+#    laboratory_management.example:
+#        class: %laboratory_management.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
