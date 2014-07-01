@@ -1,6 +1,6 @@
 Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
     type: entity
-    table: null
+    table: tests
     repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Tests\TestRepository
     id:
         id:
@@ -8,13 +8,6 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
             id: true
             generator:
                 strategy: AUTO
-    inheritanceType: SINGLE_TABLE
-        discriminatorColumn:
-            name: type
-            type: string
-            length: 255
-        discriminatorMap:
-
     fields:
         value:
             type: decimal
@@ -25,11 +18,14 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
             type: string
             length: 255
         labAssistant:
+            name: lab_assistant
             type: string
             length: 255
         registerDate:
+            name: register_date
             type: datetime
         conductDate:
+            name: conduct_date
             type: datetime
         samples:
             type: array
