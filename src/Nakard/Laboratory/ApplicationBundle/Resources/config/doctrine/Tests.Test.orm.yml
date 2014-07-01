@@ -18,14 +18,11 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
             type: string
             length: 255
         labAssistant:
-            name: lab_assistant
             type: string
             length: 255
         registerDate:
-            name: register_date
             type: datetime
         conductDate:
-            name: conduct_date
             type: datetime
         samples:
             type: array
