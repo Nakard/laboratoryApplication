@@ -12,42 +12,42 @@ class User
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $surname;
+    protected $surname;
 
     /**
      * @var string
      */
-    private $login;
+    protected $login;
 
     /**
      * @var string
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      */
-    private $pesel;
+    protected $pesel;
 
     /**
      * @var \DateTime
      */
-    private $registerDate;
+    protected $registerDate;
 
 
     /**
