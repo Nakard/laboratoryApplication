@@ -1,0 +1,36 @@
+Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
+    type: entity
+    table: null
+    repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Tests\TestRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    inheritanceType: SINGLE_TABLE
+        discriminatorColumn:
+            name: type
+            type: string
+            length: 255
+        discriminatorMap:
+
+    fields:
+        value:
+            type: decimal
+        scheduler:
+            type: string
+            length: 255
+        patient:
+            type: string
+            length: 255
+        labAssistant:
+            type: string
+            length: 255
+        registerDate:
+            type: datetime
+        conductDate:
+            type: datetime
+        samples:
+            type: array
+    lifecycleCallbacks: {  }

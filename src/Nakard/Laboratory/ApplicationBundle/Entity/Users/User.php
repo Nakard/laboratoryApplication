@@ -2,8 +2,6 @@
 
 namespace Nakard\Laboratory\ApplicationBundle\Entity\Users;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Class User
  * @package Nakard\Laboratory\ApplicationBundle\Entity\Users
