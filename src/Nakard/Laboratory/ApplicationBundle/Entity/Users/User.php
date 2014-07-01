@@ -55,7 +55,6 @@ class User
      */
     protected $type;
 
-
     /**
      * Get id
      *

@@ -1,0 +1,5 @@
+Nakard\Laboratory\ApplicationBundle\Entity\Users\Doctor:
+    type: entity
+    table: users
+    repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Users\DoctorRepository
+    lifecycleCallbacks: {  }
