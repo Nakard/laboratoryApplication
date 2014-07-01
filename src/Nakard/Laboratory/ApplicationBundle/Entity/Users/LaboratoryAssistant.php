@@ -9,11 +9,22 @@
  */
 
 namespace Nakard\Laboratory\ApplicationBundle\Entity\Users;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class LaboratoryAssistant
  * @package Nakard\Laboratory\ApplicationBundle\Entity\Users
  */
 class LaboratoryAssistant extends User{
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    protected $assignedTests;
+
+    public function __construct()
+    {
+        $this->assignedTests = new ArrayCollection();
+    }
 
 } 

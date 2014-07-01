@@ -3,3 +3,7 @@ Nakard\Laboratory\ApplicationBundle\Entity\Users\Doctor:
     table: users
     repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Users\DoctorRepository
     lifecycleCallbacks: {  }
+    oneToMany:
+      scheduledTests:
+        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test
+        mappedBy: scheduler

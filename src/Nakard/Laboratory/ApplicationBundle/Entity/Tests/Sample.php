@@ -13,22 +13,22 @@ class Sample
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      */
-    private $admittedAt;
+    protected $admittedAt;
 
     /**
      * @var string
      */
-    private $type;
+    protected $type;
 
     /**
      * @var Patient
      */
-    private $patient;
+    protected $patient;
 
 
     /**

@@ -11,15 +11,6 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
     fields:
         value:
             type: decimal
-        scheduler:
-            type: string
-            length: 255
-        patient:
-            type: string
-            length: 255
-        labAssistant:
-            type: string
-            length: 255
         registerDate:
             type: datetime
         conductDate:
@@ -27,3 +18,13 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
         samples:
             type: array
     lifecycleCallbacks: {  }
+    manyToOne:
+      patient:
+        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Patient
+        reversedBy: tests
+      scheduler:
+        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Doctor
+        reversedBy: schedulesTests
+      labAssistant:
+        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant
+        reversedBy: assignedTests
