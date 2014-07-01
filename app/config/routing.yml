@@ -1,8 +1,3 @@
 nakard_laboratory_application:
     resource: "@NakardLaboratoryApplicationBundle/Resources/config/routing.yml"
     prefix:   /
-
-laboratory_management:
-    resource: "@LaboratoryManagementBundle/Resources/config/routing.yml"
-    prefix:   /
-
