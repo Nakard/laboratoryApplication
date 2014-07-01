@@ -3,7 +3,6 @@
 namespace Nakard\Laboratory\ApplicationBundle\Entity\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 use Nakard\Laboratory\ApplicationBundle\Entity\Users\Doctor;
 use Nakard\Laboratory\ApplicationBundle\Entity\Users\Patient;
 use Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant;

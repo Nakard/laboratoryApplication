@@ -1,0 +1,20 @@
+Nakard\Laboratory\ApplicationBundle\Entity\Tests\Sample:
+    type: entity
+    table: samples
+    repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Tests\SampleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        admittedAt:
+            type: datetime
+        type:
+            type: string
+            length: 255
+        patient:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
