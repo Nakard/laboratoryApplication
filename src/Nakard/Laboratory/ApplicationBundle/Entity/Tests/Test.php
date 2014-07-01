@@ -236,7 +236,7 @@ class Test
     /**
      * Set samples
      *
-     * @param array $samples
+     * @param  ArrayCollection $samples
      * @return Test
      */
     public function setSamples($samples)

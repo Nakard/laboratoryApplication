@@ -11,6 +11,7 @@
 namespace Nakard\Laboratory\ApplicationBundle\Entity\Users;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test;
 
 /**
  * Class Doctor
@@ -26,6 +27,25 @@ class Doctor extends User{
     public function __construct()
     {
         $this->scheduledTests = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getScheduledTests()
+    {
+        return $this->scheduledTests;
+    }
+
+    /**
+     * @param   Test    $test
+     * @return  Doctor
+     */
+    public function scheduleTest(Test $test)
+    {
+        $this->scheduledTests[] = $test;
+
+        return $this;
     }
 
 } 

@@ -10,6 +10,7 @@
 
 namespace Nakard\Laboratory\ApplicationBundle\Entity\Users;
 use Doctrine\Common\Collections\ArrayCollection;
+use Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test;
 
 /**
  * Class LaboratoryAssistant
@@ -27,4 +28,19 @@ class LaboratoryAssistant extends User{
         $this->assignedTests = new ArrayCollection();
     }
 
+    public function getAssignedTests()
+    {
+        return $this->assignedTests;
+    }
+
+    /**
+     * @param   Test                $test
+     * @return  LaboratoryAssistant
+     */
+    public function assignToTest(Test $test)
+    {
+        $this->assignedTests[] = $test;
+
+        return $this;
+    }
 } 

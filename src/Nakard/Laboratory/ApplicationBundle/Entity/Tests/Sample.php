@@ -119,4 +119,23 @@ class Sample
     {
         return $this->patient;
     }
+
+    /**
+     * @param   Test    $test
+     * @return  Sample
+     */
+    public function addTest(Test $test)
+    {
+        $this->tests[] = $test;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTests()
+    {
+        return $this->tests;
+    }
 }
