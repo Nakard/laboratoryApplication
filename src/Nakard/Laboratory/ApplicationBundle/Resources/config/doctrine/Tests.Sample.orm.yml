@@ -14,7 +14,12 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Sample:
         type:
             type: string
             length: 255
-        patient:
-            type: string
-            length: 255
     lifecycleCallbacks: {  }
+    manyToOne:
+        patient:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Patient
+            inversedBy: samples
+    manyToMany:
+        tests:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test
+            mappedBy: samples

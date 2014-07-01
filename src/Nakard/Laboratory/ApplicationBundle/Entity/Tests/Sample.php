@@ -2,6 +2,7 @@
 
 namespace Nakard\Laboratory\ApplicationBundle\Entity\Tests;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\ApplicationBundle\Entity\Users\Patient;
 
 /**
@@ -30,6 +31,15 @@ class Sample
      */
     protected $patient;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $tests;
+
+    public function __construct()
+    {
+        $this->tests = new ArrayCollection();
+    }
 
     /**
      * Get id

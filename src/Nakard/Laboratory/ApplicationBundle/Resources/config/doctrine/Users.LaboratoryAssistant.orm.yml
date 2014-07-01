@@ -4,6 +4,6 @@ Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant:
     repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistantRepository
     lifecycleCallbacks: {  }
     oneToMany:
-      assignedTests:
-        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test
-        mappedBy: labAssistant
+        assignedTests:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test
+            mappedBy: labAssistant

@@ -53,7 +53,7 @@ class Test
     protected $conductDate;
 
     /**
-     * @var array
+     * @var ArrayCollection
      */
     protected $samples;
 

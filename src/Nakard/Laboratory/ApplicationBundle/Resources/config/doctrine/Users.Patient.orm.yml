@@ -4,9 +4,9 @@ Nakard\Laboratory\ApplicationBundle\Entity\Users\Patient:
     repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Users\PatientRepository
     lifecycleCallbacks: {  }
     oneToMany:
-      tests:
-        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test
-        mappedBy: patient
-      samples:
-        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Sample
-        mappedBy: patient
+        tests:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test
+            mappedBy: patient
+        samples:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Sample
+            mappedBy: patient

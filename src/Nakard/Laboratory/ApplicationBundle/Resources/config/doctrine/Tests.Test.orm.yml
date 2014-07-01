@@ -15,16 +15,18 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
             type: datetime
         conductDate:
             type: datetime
-        samples:
-            type: array
     lifecycleCallbacks: {  }
     manyToOne:
-      patient:
-        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Patient
-        reversedBy: tests
-      scheduler:
-        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Doctor
-        reversedBy: schedulesTests
-      labAssistant:
-        targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant
-        reversedBy: assignedTests
+        patient:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Patient
+            inversedBy: tests
+        scheduler:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Doctor
+            inversedBy: schedulesTests
+        labAssistant:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant
+            inversedBy: assignedTests
+    manyToMany:
+        samples:
+            targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Tests\Sample
+            inversedBy: tests
