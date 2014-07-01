@@ -5,7 +5,8 @@ namespace Nakard\Laboratory\ApplicationBundle\Entity\Users;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
+ * Class User
+ * @package Nakard\Laboratory\ApplicationBundle\Entity\Users
  */
 class User
 {
@@ -48,6 +49,11 @@ class User
      * @var \DateTime
      */
     protected $registerDate;
+
+    /**
+     * @var string
+     */
+    protected $type;
 
 
     /**
@@ -219,5 +225,21 @@ class User
     public function getRegisterDate()
     {
         return $this->registerDate;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

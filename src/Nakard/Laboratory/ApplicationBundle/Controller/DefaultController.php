@@ -4,6 +4,10 @@ namespace Nakard\Laboratory\ApplicationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class DefaultController
+ * @package Nakard\Laboratory\ApplicationBundle\Controller
+ */
 class DefaultController extends Controller
 {
     public function indexAction($name)
