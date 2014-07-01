@@ -1,6 +1,6 @@
 <?php
 
-namespace Laboratory\Bundle\ManagementBundle\Tests\Controller;
+namespace Nakard\Laboratory\ApplicationBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

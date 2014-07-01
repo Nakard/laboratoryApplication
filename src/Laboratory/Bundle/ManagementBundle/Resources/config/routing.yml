@@ -1,3 +1,0 @@
-laboratory_management_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: LaboratoryManagementBundle:Default:index }
