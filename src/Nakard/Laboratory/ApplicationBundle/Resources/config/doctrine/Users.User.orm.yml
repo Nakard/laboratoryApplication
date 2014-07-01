@@ -15,9 +15,9 @@ Nakard\Laboratory\ApplicationBundle\Entity\Users\User:
         length: 255
     discriminatorMap:
         patient: Patient
-        #assistant: LaboratoryAssistant
-        #doctor: Doctor
-        #admin: Administrator
+        assistant: LaboratoryAssistant
+        doctor: Doctor
+        admin: Administrator
     fields:
         name:
             type: string
