@@ -1,0 +1,32 @@
+Nakard\Laboratory\ApplicationBundle\Entity\Users\User:
+    type: entity
+    table: null
+    repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Users\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        surname:
+            type: string
+            length: 255
+        login:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        pesel:
+            type: string
+            length: 255
+        registerDate:
+            type: datetime
+    lifecycleCallbacks: {  }
