@@ -11,7 +11,7 @@
 namespace Nakard\Laboratory\UserBundle\Form\Type;
 
 
-class RegistrationFormType extends  
+class RegistrationFormType extends
 {
 
 } 
