@@ -21,7 +21,10 @@
         "twbs/bootstrap": "3.2.*",
         "components/jquery": "1.*",
         "braincrafted/bootstrap-bundle": "~2.0",
-        "egulias/email-validator": "1.1.*"
+        "egulias/email-validator": "1.1.*",
+        "knplabs/knp-paginator-bundle": "~2.4",
+        "knplabs/knp-menu": "2.0.*@dev",
+        "knplabs/knp-menu-bundle": "2.0.*@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

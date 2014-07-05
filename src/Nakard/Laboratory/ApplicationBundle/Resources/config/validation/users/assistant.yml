@@ -1,4 +1,4 @@
-Nakard\Laboratory\ApplicationBundle\Entity\Users\User:
+Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [login, email]

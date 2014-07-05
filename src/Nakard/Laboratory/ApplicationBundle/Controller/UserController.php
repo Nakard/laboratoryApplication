@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
 
-    public function indexAction($page)
+    public function indexAction()
     {
         $users = $this->getDoctrine()->getRepository('Nakard\Laboratory\ApplicationBundle\Entity\Users\User')->findAll();
 
@@ -33,13 +33,15 @@ class UserController extends Controller
 
     public function addAction(Request $request)
     {
-        $user = new User();
-        $form = $this->createForm(new UserType(), $user);
+        $userManagement = $this->get('nakard_laboratory_application.user_management');
+        $form = $this->createForm(new UserType());
+        $type = $request->request->get('nakard_laboratory_applicationbundle_users_user')['type'];
+        $user = $userManagement->createProperUser($type);
+        $form->setData($user);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
             $flash = $this->get('braincrafted_bootstrap.flash');
 
             $user->setRegisterDate(new \DateTime());
