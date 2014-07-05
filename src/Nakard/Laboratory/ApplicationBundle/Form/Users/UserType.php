@@ -27,7 +27,7 @@ class UserType extends AbstractType
                 'second_options'    =>  array('label' => 'Re-type password')
             ))
             ->add('email', 'email')
-            ->add('pesel', 'text')
+            ->add('pesel', 'text', array('label' => 'PESEL'))
             ->add('type', 'choice', array(
                 'choices'   =>  array(
                     'doctor'    =>  'Doctor',
