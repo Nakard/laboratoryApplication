@@ -8,20 +8,35 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class UserType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('surname')
-            ->add('login')
-            ->add('password')
-            ->add('email')
-            ->add('pesel')
-            ->add('registerDate')
+            ->add('name', 'text')
+            ->add('surname', 'text')
+            ->add('login', 'text')
+            ->add('password', 'repeated', array(
+                'type'              =>  'password',
+                'invalid_message'   =>  'The password fields must match.',
+                'options'           =>  array('attr' => array('class' => 'password-field')),
+                'required'          =>  true,
+                'first_options'     =>  array('label' => 'Password'),
+                'second_options'    =>  array('label' => 'Re-type password')
+            ))
+            ->add('email', 'email')
+            ->add('pesel', 'number')
+            ->add('type', 'choice', array(
+                'choices'   =>  array(
+                    'doctor'    =>  'Doctor',
+                    'assistant' =>  'Laboratory Assistant',
+                    'patient'   =>  'Patient',
+                    'admin'     =>  'System Administrator'
+                )
+            ))
+            ->add('save', 'submit')
         ;
     }
     

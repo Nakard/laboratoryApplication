@@ -10,4 +10,4 @@ nakard_laboratory_application_users_add:
 
 nakard_laboratory_application_homepage:
     path:     /{name}
-    defaults: { _controller: NakardLaboratoryApplicationBundle:Default:index, name: 'Nieznajomy' }
+    defaults: { _controller: NakardLaboratoryApplicationBundle:Default:index, name: 'Stranger' }
