@@ -12,3 +12,4 @@
 !bin/symfony_requirements
 /composer.phar
 /.idea/*
+/web/fonts/*
