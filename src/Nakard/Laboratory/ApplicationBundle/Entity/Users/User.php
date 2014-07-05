@@ -110,6 +110,16 @@ class User
     }
 
     /**
+     * Returns credentials of an user
+     *
+     * @return string
+     */
+    public function getCredentials()
+    {
+        return $this->name . ' ' . $this->surname;
+    }
+
+    /**
      * Set login
      *
      * @param   string $login
@@ -238,5 +248,42 @@ class User
     public function getType()
     {
         return $this->type;
+    }
+
+    public static function getTypes()
+    {
+        return array(
+            'admin',
+            'doctor',
+            'patient',
+            'assistant',
+        );
+    }
+
+    /**
+     * Checks if pesel is valid
+     * @return  bool
+     */
+    function isValidPesel()
+    {
+        $pesel = $this->getPesel();
+        if (!preg_match('/^[0-9]{11}$/',$pesel))
+        {
+            return false;
+        }
+
+        $arrSteps = array(1, 3, 7, 9, 1, 3, 7, 9, 1, 3);
+        $intSum = 0;
+        for ($i = 0; $i < 10; $i++)
+        {
+            $intSum += $arrSteps[$i] * $pesel[$i];
+        }
+        $int = 10 - $intSum % 10;
+        $intControlNr = ($int == 10) ? 0 : $int;
+        if ($intControlNr == $pesel[10])
+        {
+            return true;
+        }
+        return false;
     }
 }

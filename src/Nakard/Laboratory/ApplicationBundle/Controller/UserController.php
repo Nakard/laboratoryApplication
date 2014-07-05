@@ -13,6 +13,7 @@ namespace Nakard\Laboratory\ApplicationBundle\Controller;
 use Nakard\Laboratory\ApplicationBundle\Entity\Users\User;
 use Nakard\Laboratory\ApplicationBundle\Form\Users\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class UserController
@@ -30,10 +31,27 @@ class UserController extends Controller
         ));
     }
 
-    public function addAction()
+    public function addAction(Request $request)
     {
         $user = new User();
         $form = $this->createForm(new UserType(), $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $flash = $this->get('braincrafted_bootstrap.flash');
+
+            $user->setRegisterDate(new \DateTime());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $flash->success('User ' . $user->getCredentials(). ' succesfully registered');
+
+            return $this->redirect($this->generateUrl('nakard_laboratory_application_users_index'));
+        }
+
         return $this->render('NakardLaboratoryApplicationBundle:User:add.html.twig', array(
             'form'  =>  $form->createView()
         ));

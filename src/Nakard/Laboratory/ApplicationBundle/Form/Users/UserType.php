@@ -37,6 +37,7 @@ class UserType extends AbstractType
                 )
             ))
             ->add('save', 'submit')
+            ->setMethod('POST')
         ;
     }
     
