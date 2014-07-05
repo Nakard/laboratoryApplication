@@ -1,3 +1,13 @@
+nakard_laboratory_application_users_index:
+    path:     /users/{page}
+    defaults: { _controller: NakardLaboratoryApplicationBundle:User:index, page: 1}
+    requirements:
+        page: \d+
+
+nakard_laboratory_application_users_add:
+    path:     /users/add
+    defaults: { _controller: NakardLaboratoryApplicationBundle:User:add}
+
 nakard_laboratory_application_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: NakardLaboratoryApplicationBundle:Default:index }
+    path:     /{name}
+    defaults: { _controller: NakardLaboratoryApplicationBundle:Default:index, name: 'Nieznajomy' }

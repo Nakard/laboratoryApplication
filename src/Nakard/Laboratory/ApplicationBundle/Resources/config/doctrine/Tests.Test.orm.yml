@@ -22,7 +22,7 @@ Nakard\Laboratory\ApplicationBundle\Entity\Tests\Test:
             inversedBy: tests
         scheduler:
             targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\Doctor
-            inversedBy: schedulesTests
+            inversedBy: scheduledTests
         labAssistant:
             targetEntity: Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant
             inversedBy: assignedTests
