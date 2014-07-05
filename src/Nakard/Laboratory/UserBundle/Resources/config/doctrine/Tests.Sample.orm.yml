@@ -1,0 +1,25 @@
+Nakard\Laboratory\UserBundle\Entity\Tests\Sample:
+    type: entity
+    table: samples
+    repositoryClass: Nakard\Laboratory\UserBundle\Entity\Tests\SampleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        admittedAt:
+            type: datetime
+        type:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    manyToOne:
+        patient:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\Patient
+            inversedBy: samples
+    manyToMany:
+        tests:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Test
+            mappedBy: samples

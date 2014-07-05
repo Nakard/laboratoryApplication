@@ -1,5 +1,0 @@
-Nakard\Laboratory\ApplicationBundle\Entity\Users\Administrator:
-    type: entity
-    table: users
-    repositoryClass: Nakard\Laboratory\ApplicationBundle\Entity\Users\AdministratorRepository
-    lifecycleCallbacks: {  }

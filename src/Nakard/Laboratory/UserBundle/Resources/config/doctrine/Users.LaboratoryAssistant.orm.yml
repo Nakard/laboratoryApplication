@@ -1,0 +1,9 @@
+Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant:
+    type: entity
+    table: users
+    repositoryClass: Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistantRepository
+    lifecycleCallbacks: {  }
+    oneToMany:
+        assignedTests:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Test
+            mappedBy: labAssistant

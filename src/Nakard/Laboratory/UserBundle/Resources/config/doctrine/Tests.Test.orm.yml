@@ -1,0 +1,32 @@
+Nakard\Laboratory\UserBundle\Entity\Tests\Test:
+    type: entity
+    table: tests
+    repositoryClass: Nakard\Laboratory\UserBundle\Entity\Tests\TestRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        value:
+            type: decimal
+        registerDate:
+            type: datetime
+        conductDate:
+            type: datetime
+    lifecycleCallbacks: {  }
+    manyToOne:
+        patient:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\Patient
+            inversedBy: tests
+        scheduler:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\Doctor
+            inversedBy: scheduledTests
+        labAssistant:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant
+            inversedBy: assignedTests
+    manyToMany:
+        samples:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Sample
+            inversedBy: tests

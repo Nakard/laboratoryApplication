@@ -1,0 +1,12 @@
+Nakard\Laboratory\UserBundle\Entity\Users\Patient:
+    type: entity
+    table: users
+    repositoryClass: Nakard\Laboratory\UserBundle\Entity\Users\PatientRepository
+    lifecycleCallbacks: {  }
+    oneToMany:
+        tests:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Test
+            mappedBy: patient
+        samples:
+            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Sample
+            mappedBy: patient
