@@ -26,8 +26,11 @@ class UserController extends Controller
     {
         $users = $this->getDoctrine()->getRepository('Nakard\Laboratory\ApplicationBundle\Entity\Users\User')->findAll();
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($users, $this->get('request')->query->get('page', 1), 10);
+
         return $this->render('NakardLaboratoryApplicationBundle:User:index.html.twig', array (
-            'users' =>  $users
+            'pagination' =>  $pagination
         ));
     }
 

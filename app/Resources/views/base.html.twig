@@ -8,28 +8,12 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('bundles/nakardlaboratoryapplication/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="{{ asset('bundles/nakardlaboratoryapplication/css/starter-template.css') }}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="{{ asset('bundles/nakardlaboratoryapplication/js/ie8-responsive-file-warning.js') }}"></script><![endif]-->
-    <script src="{{ asset('bundles/nakardlaboratoryapplication/js/ie-emulation-modes-warning.js') }}"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{{ asset('bundles/nakardlaboratoryapplication/js/ie10-viewport-bug-workaround.js') }}"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="{{ asset('bundles/nakardlaboratoryapplication/js/html5shiv.min.js') }}"></script>
-    <script src="{{ asset('bundles/nakardlaboratoryapplication/js/respond.min.js') }}"></script>
-    <![endif]-->
-    {% block stylesheets %}
-        {% stylesheets %}
-        {% endstylesheets %}
-    {% endblock %}
+    <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+    {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
 </head>
 
 <body>
@@ -77,11 +61,10 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 {% block javascripts %}
-    {% javascripts
-        '@NakardLaboratoryApplicationBundle/Resources/public/js/jquery.min.js'
-        '@NakardLaboratoryApplicationBundle/Resources/public/js/bootstrap.js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <!-- Include all JavaScripts, compiled by Assetic -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 {% endblock %}
 </body>
 </html>

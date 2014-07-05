@@ -1,8 +1,35 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    {% if users %}
 
+    {% if pagination %}
+    <table class="table table-bordered table-hover text-left">
+        <tr class="info">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Login</th>
+            <th>Email</th>
+            <th>PESEL</th>
+            <th>Registered</th>
+            <th>Type</th>
+        </tr>
+        {% for user in pagination %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.surname }}</td>
+            <td>{{ user.login }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.pesel }}</td>
+            <td>{{ user.registerDate|date('Y-m-d H:i') }}</td>
+            <td>{{ dump(user) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
     {% else %}
         <h1>No users found</h1>
     {% endif %}

@@ -3,6 +3,9 @@ Nakard\Laboratory\ApplicationBundle\Entity\Users\LaboratoryAssistant:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [login, email]
             message: "This login and email combination is already registered"
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [pesel]
+            message: "This PESEL number is already registered"
     getters:
         validPesel:
             - 'True': { message: "PESEL is not valid"}
