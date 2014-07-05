@@ -1,1 +1,1 @@
-vendor/twbs/bootstrap/docs/assets/js/ie8-responsive-file-warning.js
+../../../../vendor/twbs/bootstrap/docs/assets/js/ie8-responsive-file-warning.js

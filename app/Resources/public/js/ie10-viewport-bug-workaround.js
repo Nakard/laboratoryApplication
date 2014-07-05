@@ -1,1 +1,1 @@
-vendor/twbs/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js
+../../../../vendor/twbs/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js
