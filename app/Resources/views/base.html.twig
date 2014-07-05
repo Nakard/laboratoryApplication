@@ -9,10 +9,10 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <title>{% block title %}Welcome!{% endblock %}</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('bundles/nakardlaboratoryapplication/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
+    <link href="{{  }}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -26,7 +26,9 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        {% stylesheets %}
+    {% endblock %}
 </head>
 
 <body>
@@ -69,6 +71,8 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../../dist/js/bootstrap.min.js"></script>
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    {% javascripts %}
+{% endblock %}
 </body>
 </html>
