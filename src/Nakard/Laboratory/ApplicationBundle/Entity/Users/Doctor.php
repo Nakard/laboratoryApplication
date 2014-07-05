@@ -48,4 +48,12 @@ class Doctor extends User{
         return $this;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getTypeName()
+    {
+        return 'Doctor';
+    }
+
 } 

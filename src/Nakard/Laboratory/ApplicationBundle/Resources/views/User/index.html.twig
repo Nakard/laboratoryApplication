@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    {% if pagination %}
+    {% if pagination.getTotalItemCount %}
     <table class="table table-bordered table-hover text-left">
         <tr class="info">
             <th>ID</th>
@@ -23,7 +23,7 @@
             <td>{{ user.email }}</td>
             <td>{{ user.pesel }}</td>
             <td>{{ user.registerDate|date('Y-m-d H:i') }}</td>
-            <td>{{ dump(user) }}</td>
+            <td>{{ user.getTypeName}}</td>
         </tr>
         {% endfor %}
     </table>

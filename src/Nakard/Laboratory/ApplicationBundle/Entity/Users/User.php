@@ -250,6 +250,19 @@ class User
         return $this->type;
     }
 
+    /**
+     * Gets Type name of User
+     *
+     * @return string
+     */
+    public function getTypeName()
+    {
+        return 'User';
+    }
+
+    /**
+     * @return array
+     */
     public static function getTypes()
     {
         return array(
@@ -264,7 +277,7 @@ class User
      * Checks if pesel is valid
      * @return  bool
      */
-    function isValidPesel()
+    public function isValidPesel()
     {
         $pesel = $this->getPesel();
         if (!preg_match('/^[0-9]{11}$/',$pesel))

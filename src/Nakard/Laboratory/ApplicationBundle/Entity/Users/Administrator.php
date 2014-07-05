@@ -16,4 +16,12 @@ namespace Nakard\Laboratory\ApplicationBundle\Entity\Users;
  */
 class Administrator extends User {
 
+    /**
+     * @inheritdoc
+     */
+    public function getTypeName()
+    {
+        return 'Administrator';
+    }
+
 } 

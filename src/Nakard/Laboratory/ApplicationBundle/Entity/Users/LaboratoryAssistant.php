@@ -43,4 +43,12 @@ class LaboratoryAssistant extends User{
 
         return $this;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTypeName()
+    {
+        return 'Laboratory Assistant';
+    }
 } 

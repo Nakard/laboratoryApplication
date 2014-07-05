@@ -13,3 +13,5 @@
 /composer.phar
 /.idea/*
 /web/fonts/*
+/web/js/*
+/web/css/*
