@@ -30,7 +30,10 @@
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
         "phpunit/phpunit": "4.1.*",
-        "symfony/stopwatch": "2.5.*"
+        "symfony/stopwatch": "2.5.*",
+        "pdepend/pdepend" : "2.0.*",
+        "phpmd/phpmd" : "2.0.*",
+        "squizlabs/php_codesniffer": "1.*"
     },
     "scripts": {
         "post-root-package-install": [

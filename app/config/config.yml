@@ -91,3 +91,7 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Nakard\Laboratory\UserBundle\Entity\Users\User
+    registration:
+        form:
+            type: nakard_laboratory_user_registration
+            handler: nakard_laboratory_user.form.handler.registration

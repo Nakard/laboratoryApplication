@@ -7,7 +7,3 @@ nakard_laboratory_application_users_index:
 nakard_laboratory_application_users_add:
     path:     /users/add
     defaults: { _controller: NakardLaboratoryUserBundle:User:add}
-
-nakard_laboratory_application_homepage:
-    path:     /{name}
-    defaults: { _controller: NakardLaboratoryUserBundle:Default:index, name: 'Stranger' }
