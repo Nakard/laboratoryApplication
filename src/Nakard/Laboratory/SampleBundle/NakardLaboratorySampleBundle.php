@@ -11,5 +11,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class NakardLaboratorySampleBundle extends Bundle
 {
-    
+
 }
