@@ -1,7 +1,7 @@
-Nakard\Laboratory\UserBundle\Entity\Tests\Sample:
+Nakard\Laboratory\SampleBundle\Entity\Samples\Sample:
     type: entity
     table: samples
-    repositoryClass: Nakard\Laboratory\UserBundle\Entity\Tests\SampleRepository
+    repositoryClass: Nakard\Laboratory\SampleBundle\Entity\Samples\SampleRepository
     id:
         id:
             type: integer
@@ -21,5 +21,5 @@ Nakard\Laboratory\UserBundle\Entity\Tests\Sample:
             inversedBy: samples
     manyToMany:
         tests:
-            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Test
+            targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
             mappedBy: samples

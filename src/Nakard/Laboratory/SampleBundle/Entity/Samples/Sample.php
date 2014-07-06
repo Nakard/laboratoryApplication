@@ -1,13 +1,13 @@
 <?php
 
-namespace Nakard\Laboratory\SampleBundle\Entity\Tests;
+namespace Nakard\Laboratory\SampleBundle\Entity\Samples;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 
 /**
  * Class Sample
- * @package Nakard\Laboratory\SampleBundle\Entity\Tests
+ * @package Nakard\Laboratory\SampleBundle\Entity\Samples
  */
 class Sample
 {

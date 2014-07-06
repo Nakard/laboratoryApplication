@@ -5,8 +5,8 @@ Nakard\Laboratory\UserBundle\Entity\Users\Patient:
     lifecycleCallbacks: {  }
     oneToMany:
         tests:
-            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Test
+            targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
             mappedBy: patient
         samples:
-            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Sample
+            targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\Sample
             mappedBy: patient

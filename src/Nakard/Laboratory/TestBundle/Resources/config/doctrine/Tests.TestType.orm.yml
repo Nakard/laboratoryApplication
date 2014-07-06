@@ -1,0 +1,28 @@
+Nakard\Laboratory\TestBundle\Entity\Tests\TestType:
+    type: entity
+    table: test_type
+    repositoryClass: Nakard\Laboratory\TestBundle\Entity\Tests\TestTypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        createdAt:
+            column: created_at
+            type: datetime
+    lifecycleCallbacks: {  }
+    manyToOne:
+        packet:
+            targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket
+            inversedBy: testTypes
+    oneToMany:
+        tests:
+            targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
+            mappedBy: type

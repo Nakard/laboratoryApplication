@@ -1,0 +1,36 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    {% if pagination.getTotalItemCount %}
+        <table class="table table-bordered table-striped text-left">
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Scheduler</th>
+                <th>Conductor</th>
+                <th>Value</th>
+                <th>Registered</th>
+                <th>Conducted</th>
+                <th>Type</th>
+            </tr>
+            {% for test in pagination %}
+            <tr>
+                <td>{{ test.id }}</td>
+                <td>{{ test.patient.getCredentials }}</td>
+                <td>{{ test.doctor.getCredentials }}</td>
+                <td>{{ test.labAssistant.getCredentials }}</td>
+                <td>{{ test.value }}</td>
+                <td>{{ test.registerDate|date('Y-m-d H:i') }}</td>
+                <td>{{ test.conductDate|date('Y-m-d H:i') }}</td>
+                <td>{{ test.type.name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <h1>No tests found</h1>
+    {% endif %}
+{% endblock %}

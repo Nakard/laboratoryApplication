@@ -1,0 +1,30 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    {% if pagination.getTotalItemCount %}
+        <table class="table table-bordered table-striped text-left">
+            <tr>
+                <th>ID</th>
+                <th>Packet</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created</th>
+            </tr>
+            {% for testType in pagination %}
+                <tr>
+                    <td>{{ testType.id }}</td>
+                    <td>{{ testType.packet.name }}</td>
+                    <td>{{ testType.name }}</td>
+                    <td>{{ testType.description }}</td>
+                    <td>{{ testType.createdAt|date('Y-m-d H:i') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <h1>No test types found</h1>
+    {% endif %}
+{% endblock %}

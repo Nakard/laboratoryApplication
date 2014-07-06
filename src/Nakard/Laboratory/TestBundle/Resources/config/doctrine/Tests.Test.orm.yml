@@ -1,7 +1,7 @@
-Nakard\Laboratory\UserBundle\Entity\Tests\Test:
+Nakard\Laboratory\TestBundle\Entity\Tests\Test:
     type: entity
     table: tests
-    repositoryClass: Nakard\Laboratory\UserBundle\Entity\Tests\TestRepository
+    repositoryClass: Nakard\Laboratory\TestBundle\Entity\Tests\TestRepository
     id:
         id:
             type: integer
@@ -12,8 +12,10 @@ Nakard\Laboratory\UserBundle\Entity\Tests\Test:
         value:
             type: decimal
         registerDate:
+            column: register_date
             type: datetime
         conductDate:
+            column: conduct_date
             type: datetime
     lifecycleCallbacks: {  }
     manyToOne:
@@ -24,9 +26,14 @@ Nakard\Laboratory\UserBundle\Entity\Tests\Test:
             targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\Doctor
             inversedBy: scheduledTests
         labAssistant:
+            joinColumn: laboratory_assistant_id
             targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant
             inversedBy: assignedTests
+        testType:
+            joinColumn: test_type_id
+            targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\TestType
+            inversedBy: tests
     manyToMany:
         samples:
-            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Sample
+            targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\Sample
             inversedBy: tests

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,29 +30,50 @@
             <a class="navbar-brand" href="{{ path('nakard_laboratory_application_homepage') }}">Laboratory</a>
         </div>
         <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Users <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('nakard_laboratory_application_users_index') }}">Browse users</a></li>
-                        <li><a href="{{ path('nakard_laboratory_application_users_add') }}">Add a new user</a></li>
-                    </ul>
-                </li>
-            </ul>
+            {% block menu %}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Users <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ path('nakard_laboratory_application_users_index') }}">Browse users</a></li>
+                            <li><a href="{{ path('nakard_laboratory_application_registration') }}">Add a new user</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Tests <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ path('nakard_laboratory_test_browse') }}">Browse tests</a></li>
+                            <li><a href="#">Schedule new test packet</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ path('nakard_laboratory_test_type_browse') }}">Browse test types</a></li>
+                            <li><a href="#">Define new test type</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ path('nakard_laboratory_test_packet_browse') }}">
+                                    Browse test packets
+                                </a>
+                            </li>
+                            <li><a href="#">Define new test packet</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% endblock %}
         </div><!--/.nav-collapse -->
     </div>
 </div>
 
 <div class="container">
     <div class="starter-template">
-        {% block body %}
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">
-            Use this document as a way to quickly start any new project.<br>
-            All you get is this text and a mostly barebones HTML document.
-        </p>
+        {% block fos_user_content %}
+            <h1>Bootstrap starter template</h1>
+            <p class="lead">
+                Use this document as a way to quickly start any new project.<br>
+                All you get is this text and a mostly barebones HTML document.
+            </p>
         {% endblock %}
     </div>
 </div><!-- /.container -->

@@ -11,7 +11,7 @@
 namespace Nakard\Laboratory\UserBundle\Entity\Users;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Nakard\Laboratory\UserBundle\Entity\Tests\Test;
+use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 
 /**
  * Class Doctor

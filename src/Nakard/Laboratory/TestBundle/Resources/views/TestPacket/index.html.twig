@@ -1,0 +1,28 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    {% if pagination.getTotalItemCount %}
+        <table class="table table-bordered table-striped text-left">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created</th>
+            </tr>
+            {% for packet in pagination %}
+                <tr>
+                    <td>{{ packet.id }}</td>
+                    <td>{{ packet.name }}</td>
+                    <td>{{ packet.description }}</td>
+                    <td>{{ packet.createdAt|date('Y-m-d H:i') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <h1>No test packet found</h1>
+    {% endif %}
+{% endblock %}

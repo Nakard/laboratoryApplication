@@ -1,6 +1,6 @@
 <?php
 
-namespace Nakard\Laboratory\SampleBundle\Entity\Tests;
+namespace Nakard\Laboratory\TestBundle\Entity\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Users\Doctor;
@@ -10,7 +10,7 @@ use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
 /**
  * Class Test
  *
- * @package Nakard\Laboratory\SampleBundle\Entity\Tests
+ * @package Nakard\Laboratory\TestBundle\Entity\Tests
  */
 class Test
 {
@@ -20,9 +20,9 @@ class Test
     protected $id;
 
     /**
-     * @var string
+     * @var TestType
      */
-    protected $type;
+    protected $testType;
 
     /**
      * @var string
@@ -80,12 +80,12 @@ class Test
     /**
      * Set type
      *
-     * @param string $type
-     * @return Test
+     * @param   TestType $type
+     * @return  Test
      */
-    public function setType($type)
+    public function setTestType(TestType $type)
     {
-        $this->type = $type;
+        $this->testType = $type;
 
         return $this;
     }
@@ -93,11 +93,11 @@ class Test
     /**
      * Get type
      *
-     * @return string 
+     * @return TestType
      */
-    public function getType()
+    public function getTestType()
     {
-        return $this->type;
+        return $this->testType;
     }
 
     /**

@@ -4,13 +4,12 @@ nakard_laboratory_application_users_index:
     requirements:
         page: \d+
 
-nakard_laboratory_application_users_add:
-    path:     /users/add
-    defaults: { _controller: NakardLaboratoryUserBundle:User:add}
-
 nakard_laboratory_application_registration:
     path:     /register/{type}
     defaults: { _controller: NakardLaboratoryUserBundle:Registration:register, type: ''}
     requirements:
         type: doctor|patient|admin|assistant
 
+nakard_laboratory_application_homepage:
+    path:     /
+    defaults: { _controller: NakardLaboratoryUserBundle:Default:index }

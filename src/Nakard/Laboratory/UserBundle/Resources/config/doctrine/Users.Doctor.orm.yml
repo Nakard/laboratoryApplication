@@ -5,5 +5,5 @@ Nakard\Laboratory\UserBundle\Entity\Users\Doctor:
     lifecycleCallbacks: {  }
     oneToMany:
         scheduledTests:
-            targetEntity: Nakard\Laboratory\UserBundle\Entity\Tests\Test
+            targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
             mappedBy: scheduler

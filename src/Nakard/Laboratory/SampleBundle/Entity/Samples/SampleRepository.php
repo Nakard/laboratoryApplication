@@ -1,6 +1,6 @@
 <?php
 
-namespace Nakard\Laboratory\UserBundle\Entity\Tests;
+namespace Nakard\Laboratory\UserBundle\Entity\Samples;
 
 use Doctrine\ORM\EntityRepository;
 

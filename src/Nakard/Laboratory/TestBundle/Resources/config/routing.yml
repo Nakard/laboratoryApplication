@@ -1,3 +1,21 @@
-nakard_laboratory_test_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: NakardLaboratoryTestBundle:Default:index }
+nakard_laboratory_test_schedule:
+    path:     /schedule
+    defaults: { _controller: NakardLaboratoryTestBundle:Test:schedule }
+
+nakard_laboratory_test_browse:
+    path:     /{page}
+    defaults: { _controller: NakardLaboratoryTestBundle:Test:index, page: 1 }
+    requirements:
+        page: \d+
+
+nakard_laboratory_test_type_browse:
+    path:     /type/{page}
+    defaults: { _controller: NakardLaboratoryTestBundle:TestType:index, page: 1 }
+    requirements:
+        page: \d+
+
+nakard_laboratory_test_packet_browse:
+    path:     /packet/{page}
+    defaults: { _controller: NakardLaboratoryTestBundle:TestPacket:index, page: 1 }
+    requirements:
+        page: \d+

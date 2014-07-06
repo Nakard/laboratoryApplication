@@ -37,36 +37,4 @@ class UserController extends Controller
 
         return $this->render('NakardLaboratoryUserBundle:User:index.html.twig', ['pagination' =>  $pagination]);
     }
-
-    /**
-     * Action for adding an user
-     *
-     * @param   Request                     $request
-     * @return  RedirectResponse|Response
-     */
-    public function addAction(Request $request)
-    {
-        $userManagement = $this->get('nakard_laboratory_application.user_management');
-        $form = $this->createForm(new UserType());
-        $type = $request->request->get('nakard_laboratory_UserBundle_users_user')['type'];
-        $user = $userManagement->createProperUser($type);
-        $form->setData($user);
-
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $flash = $this->get('braincrafted_bootstrap.flash');
-
-            $user->setRegisteredAt(new \DateTime());
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            $flash->success('User ' . $user->getCredentials(). ' succesfully registered');
-
-            return $this->redirect($this->generateUrl('nakard_laboratory_application_users_index'));
-        }
-
-        return $this->render('NakardLaboratoryUserBundle:User:add.html.twig', ['form'  =>  $form->createView()]);
-    }
 }

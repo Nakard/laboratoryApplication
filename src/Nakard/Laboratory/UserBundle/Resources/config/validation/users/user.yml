@@ -4,13 +4,13 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
             fields: [username, email]
             message: "This username and email combination is already registered"
             repositoryMethod: checkUniqueLoginMailCombination
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: [pesel]
-            message: "This PESEL number is already registered"
-            repositoryMethod: checkUniquePesel
-    getters:
-        validPesel:
-            - 'True': { message: "PESEL is not valid"}
+    #    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+    #        fields: [pesel]
+    #        message: "This PESEL number is already registered"
+    #        repositoryMethod: checkUniquePesel
+    #getters:
+    #    validPesel:
+    #        - 'True': { message: "PESEL is not valid"}
     properties:
         firstName:
             - NotBlank: ~
