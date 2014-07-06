@@ -17,16 +17,20 @@ use Nakard\Laboratory\UserBundle\Entity\Tests\Test;
  * Class Doctor
  * @package Nakard\Laboratory\UserBundle\Entity\Users
  */
-class Doctor extends User{
-
+class Doctor extends User
+{
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $scheduledTests;
 
+    /**
+     * Constructs a Doctor
+     */
     public function __construct()
     {
         $this->scheduledTests = new ArrayCollection();
+        parent::__construct();
     }
 
     /**
@@ -55,5 +59,4 @@ class Doctor extends User{
     {
         return 'Doctor';
     }
-
-} 
+}

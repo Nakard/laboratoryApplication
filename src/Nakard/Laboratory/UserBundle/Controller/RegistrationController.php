@@ -10,53 +10,76 @@
 
 namespace Nakard\Laboratory\UserBundle\Controller;
 
-use FOS\UserBundle\Controller\RegistrationController as BaseController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use FOS\UserBundle\Event\FormEvent;
 
 /**
  * Class RegistrationController
  * @package Nakard\Laboratory\UserBundle\Controller
  */
-class RegistrationController extends BaseController
+class RegistrationController extends Controller
 {
     /**
-     * Action for registering an user
+     * @param Request   $request
+     * @param string    $type
      *
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return null|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|void
      */
-    public function registerAction()
+    public function registerAction(Request $request, $type)
     {
-        $form = $this->container->get('fos_user.registration.form');
-        $formHandler = $this->container->get('fos_user.registration.form.handler');
-        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $userResolver = $this->get('nakard_laboratory_application.user_resolver');
+        $userManager = $this->get('fos_user.user_manager');
+        $dispatcher = $this->get('event_dispatcher');
 
-        $process = $formHandler->process($confirmationEnabled);
-        if ($process) {
-            $user = $form->getData();
+        $user = $userResolver->createProperUser($type);
+        $user->setEnabled(true);
 
-            $this->container->get('logger')->info(
-                sprintf('New user registration: %s', $user)
-            );
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 
-            if ($confirmationEnabled) {
-                $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
-                $route = 'fos_user_registration_check_email';
-            } else {
-                $this->authenticateUser($user);
-                $route = 'fos_user_registration_confirmed';
-            }
-
-            $this->setFlash('fos_user_success', 'registration.flash.user_created');
-            $url = $this->container->get('router')->generate($route);
-
-            return new RedirectResponse($url);
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
         }
 
-        return $this->container
-            ->get('templating')
-            ->renderResponse(
-                'FOSUserBundle:Registration:register.html.'.$this->getEngine(),
-                ['form' => $form->createView()]
-            );
+        $form = $formFactory->createForm();
+        $form->setData($user);
+
+        if ('POST' === $request->getMethod()) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $event = new FormEvent($form, $request);
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+
+                $userManager->updateUser($user);
+
+                if (null === $response = $event->getResponse()) {
+                    $url = $this->get('router')->generate('fos_user_registration_confirmed');
+                    $response = new RedirectResponse($url);
+                }
+
+                $dispatcher->dispatch(
+                    FOSUserEvents::REGISTRATION_COMPLETED,
+                    new FilterUserResponseEvent($user, $request, $response)
+                );
+
+                return $response;
+            }
+        }
+        return $this->render(
+            'NakardLaboratoryUserBundle:Registration:register.html.twig',
+            ['form' => $form->createView()]
+        );
+    }
+
+    public function confirmedAction()
+    {
+
     }
 }

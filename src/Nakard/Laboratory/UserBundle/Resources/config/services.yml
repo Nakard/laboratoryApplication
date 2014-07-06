@@ -5,15 +5,10 @@ services:
 #    nakard_laboratory_application.example:
 #        class: %nakard_laboratory_application.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
-    nakard_laboratory_application.user_management:
-        class: Nakard\Laboratory\UserBundle\Service\UserManagementService
+    nakard_laboratory_application.user_resolver:
+        class: Nakard\Laboratory\UserBundle\Service\UserResolverService
     nakard_laboratory_user.registration.form.type:
         class: Nakard\Laboratory\UserBundle\Form\Type\RegistrationFormType
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: nakard_laboratory_user_registration }
-    nakard_laboratory_user.form.handler.registration:
-            class: Nakard\Laboratory\UserBundle\Form\Handler\RegistrationFormHandler
-            arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer", "@fos_user.util.token_generator"]
-            scope: request
-            public: false

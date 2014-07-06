@@ -1,8 +1,8 @@
 Nakard\Laboratory\UserBundle\Entity\Users\User:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: [login, email]
-            message: "This login and email combination is already registered"
+            fields: [username, email]
+            message: "This username and email combination is already registered"
             repositoryMethod: checkUniqueLoginMailCombination
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [pesel]
@@ -12,7 +12,7 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
         validPesel:
             - 'True': { message: "PESEL is not valid"}
     properties:
-        name:
+        firstName:
             - NotBlank: ~
             - Length:
                 min: 2
@@ -21,7 +21,7 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
                 pattern: "/\d/"
                 match:   false
                 message: Your name cannot contain a number
-        surname:
+        lastName:
             - NotBlank: ~
             - Length:
                 min: 2
@@ -30,12 +30,12 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
                 pattern: "/\d/"
                 match:   false
                 message: Your surname cannot contain a number
-        login:
+        username:
             - NotBlank: ~
             - Length:
                 min: 5
                 max: 255
-        password:
+        plainPassword:
             - NotBlank: ~
             - Length:
                 min: 8
@@ -51,7 +51,7 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
             - Length:
                 min: 11
                 max: 11
-        registerDate:
+        registeredAt:
             - DateTime: ~
         type:
             - Choice: { callback: getTypes }

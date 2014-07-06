@@ -6,9 +6,9 @@
     <table class="table table-bordered table-striped text-left">
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Login</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
             <th>Email</th>
             <th>PESEL</th>
             <th>Registered</th>
@@ -17,12 +17,12 @@
         {% for user in pagination %}
         <tr>
             <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.surname }}</td>
-            <td>{{ user.login }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.username }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.pesel }}</td>
-            <td>{{ user.registerDate|date('Y-m-d H:i') }}</td>
+            <td>{{ user.registeredAt|date('Y-m-d H:i') }}</td>
             <td>{{ user.getTypeName}}</td>
         </tr>
         {% endfor %}

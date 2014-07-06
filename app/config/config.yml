@@ -94,4 +94,3 @@ fos_user:
     registration:
         form:
             type: nakard_laboratory_user_registration
-            handler: nakard_laboratory_user.form.handler.registration

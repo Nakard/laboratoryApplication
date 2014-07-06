@@ -9,6 +9,7 @@
  */
 
 namespace Nakard\Laboratory\UserBundle\Entity\Users;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Tests\Sample;
 use Nakard\Laboratory\UserBundle\Entity\Tests\Test;
@@ -17,8 +18,8 @@ use Nakard\Laboratory\UserBundle\Entity\Tests\Test;
  * Class Patient
  * @package Nakard\Laboratory\UserBundle\Entity\Users
  */
-class Patient extends User {
-
+class Patient extends User
+{
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
@@ -29,10 +30,14 @@ class Patient extends User {
      */
     protected $samples;
 
+    /**
+     * Creates Patient
+     */
     public function __construct()
     {
         $this->tests = new ArrayCollection();
         $this->samples = new ArrayCollection();
+        parent::__construct();
     }
 
     /**
@@ -80,5 +85,4 @@ class Patient extends User {
     {
         return 'Patient';
     }
-
-} 
+}

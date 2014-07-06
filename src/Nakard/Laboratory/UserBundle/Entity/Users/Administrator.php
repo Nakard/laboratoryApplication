@@ -14,8 +14,8 @@ namespace Nakard\Laboratory\UserBundle\Entity\Users;
  * Class Administrator
  * @package Nakard\Laboratory\UserBundle\Entity\Users
  */
-class Administrator extends User {
-
+class Administrator extends User
+{
     /**
      * @inheritdoc
      */
@@ -23,5 +23,4 @@ class Administrator extends User {
     {
         return 'Administrator';
     }
-
-} 
+}

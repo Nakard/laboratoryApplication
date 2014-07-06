@@ -9,6 +9,7 @@
  */
 
 namespace Nakard\Laboratory\UserBundle\Entity\Users;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Tests\Test;
 
@@ -16,18 +17,25 @@ use Nakard\Laboratory\UserBundle\Entity\Tests\Test;
  * Class LaboratoryAssistant
  * @package Nakard\Laboratory\UserBundle\Entity\Users
  */
-class LaboratoryAssistant extends User{
-
+class LaboratoryAssistant extends User
+{
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $assignedTests;
 
+    /**
+     * Constructs Laboratory Assistant
+     */
     public function __construct()
     {
         $this->assignedTests = new ArrayCollection();
+        parent::__construct();
     }
 
+    /**
+     * @return ArrayCollection
+     */
     public function getAssignedTests()
     {
         return $this->assignedTests;
@@ -51,4 +59,4 @@ class LaboratoryAssistant extends User{
     {
         return 'Laboratory Assistant';
     }
-} 
+}

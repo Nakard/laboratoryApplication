@@ -25,15 +25,20 @@ class RegistrationFormType extends BaseType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', null, ['label' => 'form.username', 'translation_domain' => 'FOSUserBundle'])
-            ->add('email', 'email', ['label' => 'form.email', 'translation_domain' => 'FOSUserBundle'])
+            ->add('pesel', 'text', ['label' => 'PESEL', 'translation_domain' => 'FOSUserBundle'])
+            ->add('firstName', 'text', ['label' => 'First Name', 'translation_domain' => 'FOSUserBundle'])
+            ->add('lastName', 'text', ['label' => 'Last Name', 'translation_domain' => 'FOSUserBundle'])
+            ->add('username', null, ['label' => 'Username', 'translation_domain' => 'FOSUserBundle'])
+            ->add('email', 'email', ['label' => 'Email', 'translation_domain' => 'FOSUserBundle'])
             ->add('plainPassword', 'repeated', [
                 'type' => 'password',
                 'options' => ['translation_domain' => 'FOSUserBundle'],
-                'first_options' => ['label' => 'form.password'],
-                'second_options' => ['label' => 'form.password_confirmation'],
-                'invalid_message' => 'fos_user.password.mismatch',
-            ]);
+                'first_options' => ['label' => 'Password'],
+                'second_options' => ['label' => 'Re-type password'],
+                'invalid_message' => 'Passwords don\'t match',
+            ])
+            ->add('save', 'submit')
+        ;
     }
 
     /**

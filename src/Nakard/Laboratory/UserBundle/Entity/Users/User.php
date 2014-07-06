@@ -2,7 +2,7 @@
 
 namespace Nakard\Laboratory\UserBundle\Entity\Users;
 
-use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Class User
@@ -18,17 +18,12 @@ class User extends BaseUser
     /**
      * @var string
      */
-    protected $name;
+    protected $firstName;
 
     /**
      * @var string
      */
-    protected $surname;
-
-    /**
-     * @var string
-     */
-    protected $login;
+    protected $lastName;
 
     /**
      * @var string
@@ -38,17 +33,12 @@ class User extends BaseUser
     /**
      * @var \DateTime
      */
-    protected $registerDate;
+    protected $registeredAt;
 
     /**
      * @var string
      */
     protected $type;
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Get id
@@ -66,9 +56,9 @@ class User extends BaseUser
      * @param   string $name
      * @return  User
      */
-    public function setName($name)
+    public function setFirstName($name)
     {
-        $this->name = $name;
+        $this->firstName = $name;
 
         return $this;
     }
@@ -78,9 +68,9 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getName()
+    public function getFirstName()
     {
-        return $this->name;
+        return $this->firstName;
     }
 
     /**
@@ -89,9 +79,9 @@ class User extends BaseUser
      * @param   string $surname
      * @return  User
      */
-    public function setSurname($surname)
+    public function setLastName($surname)
     {
-        $this->surname = $surname;
+        $this->lastName = $surname;
 
         return $this;
     }
@@ -101,9 +91,9 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getSurname()
+    public function getLastName()
     {
-        return $this->surname;
+        return $this->lastName;
     }
 
     /**
@@ -113,30 +103,7 @@ class User extends BaseUser
      */
     public function getCredentials()
     {
-        return $this->name . ' ' . $this->surname;
-    }
-
-    /**
-     * Set login
-     *
-     * @param   string $login
-     * @return  User
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string 
-     */
-    public function getLogin()
-    {
-        return $this->login;
+        return $this->firstName . ' ' . $this->lastName;
     }
 
     /**
@@ -168,9 +135,9 @@ class User extends BaseUser
      * @param   \DateTime $registerDate
      * @return  User
      */
-    public function setRegisterDate($registerDate)
+    public function setRegisteredAt($registerDate)
     {
-        $this->registerDate = $registerDate;
+        $this->registeredAt = $registerDate;
 
         return $this;
     }
@@ -180,9 +147,9 @@ class User extends BaseUser
      *
      * @return \DateTime 
      */
-    public function getRegisterDate()
+    public function getRegisteredAt()
     {
-        return $this->registerDate;
+        return $this->registeredAt;
     }
 
     /**
@@ -216,12 +183,12 @@ class User extends BaseUser
      */
     public static function getTypes()
     {
-        return array(
+        return [
             'admin',
             'doctor',
             'patient',
             'assistant',
-        );
+        ];
     }
 
     /**
@@ -231,23 +198,28 @@ class User extends BaseUser
     public function isValidPesel()
     {
         $pesel = $this->getPesel();
-        if (!preg_match('/^[0-9]{11}$/',$pesel))
-        {
+        if (!preg_match('/^[0-9]{11}$/', $pesel)) {
             return false;
         }
 
-        $arrSteps = array(1, 3, 7, 9, 1, 3, 7, 9, 1, 3);
+        $arrSteps = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
         $intSum = 0;
-        for ($i = 0; $i < 10; $i++)
-        {
+        for ($i = 0; $i < 10; $i++) {
             $intSum += $arrSteps[$i] * $pesel[$i];
         }
         $int = 10 - $intSum % 10;
         $intControlNr = ($int == 10) ? 0 : $int;
-        if ($intControlNr == $pesel[10])
-        {
+        if ($intControlNr == $pesel[10]) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Sets registered at for the moment of registration success
+     */
+    public function setRegisterDate()
+    {
+        $this->setRegisteredAt(new \DateTime());
     }
 }

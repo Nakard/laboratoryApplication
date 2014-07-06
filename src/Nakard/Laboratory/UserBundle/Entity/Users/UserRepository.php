@@ -18,21 +18,21 @@ class UserRepository extends EntityRepository
      */
     public function checkUniqueLoginMailCombination(array $parameters)
     {
-        $login = $parameters['login'];
+        $username = $parameters['username'];
         $email = $parameters['email'];
 
-        $qb = $this->getEntityManager()->createQueryBuilder();
-        $qb
+        $query = $this->getEntityManager()->createQueryBuilder();
+        $query
             ->select('u')
             ->from('Nakard\Laboratory\UserBundle\Entity\Users\User', 'u')
-            ->where('u.login = :login')
+            ->where('u.username = :username')
             ->andWhere('u.email = :email')
             ->setMaxResults(1)
-            ->setParameter('login', $login, \PDO::PARAM_STR)
+            ->setParameter('username', $username, \PDO::PARAM_STR)
             ->setParameter('email', $email, \PDO::PARAM_STR)
         ;
 
-        return $qb->getQuery()->execute();
+        return $query->getQuery()->execute();
     }
 
     /**
@@ -45,9 +45,9 @@ class UserRepository extends EntityRepository
     {
         $pesel = $parameters['pesel'];
 
-        $qb = $this->getEntityManager()->createQueryBuilder();
+        $query = $this->getEntityManager()->createQueryBuilder();
 
-        $qb
+        $query
             ->select('u')
             ->from('Nakard\Laboratory\UserBundle\Entity\Users\User', 'u')
             ->where('u.pesel = :pesel')
@@ -55,6 +55,6 @@ class UserRepository extends EntityRepository
             ->setParameter('pesel', $pesel, \PDO::PARAM_STR)
         ;
 
-        return $qb->getQuery()->execute();
+        return $query->getQuery()->execute();
     }
 }

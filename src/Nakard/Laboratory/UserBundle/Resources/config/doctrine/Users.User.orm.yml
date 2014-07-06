@@ -20,18 +20,19 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
         admin: Administrator
         none: User
     fields:
-        name:
+        firstName:
+            column: first_name
             type: string
             length: 255
-        surname:
-            type: string
-            length: 255
-        login:
+        lastName:
+            column: last_name
             type: string
             length: 255
         pesel:
             type: string
             length: 255
-        registerDate:
+        registeredAt:
+            column: registered_at
             type: datetime
-    lifecycleCallbacks: { }
+    lifecycleCallbacks:
+        prePersist: [ setRegisterDate ]

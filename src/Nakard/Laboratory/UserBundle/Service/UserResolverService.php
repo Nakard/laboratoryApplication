@@ -1,6 +1,6 @@
 <?php
 /**
- * UserManagementService.php
+ * UserResolverService.php
  *
  * Creation date: 2014-07-05
  * Creation time: 16:50
@@ -15,19 +15,17 @@ use Nakard\Laboratory\UserBundle\Entity\Users\Doctor;
 use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 use Nakard\Laboratory\UserBundle\Entity\Users\User;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 
 /**
- * Class UserManagementService
+ * Class UserResolverService
  * @package Nakard\Laboratory\UserBundle\Service
  */
-class UserManagementService
+class UserResolverService
 {
     /**
      * Creates proper class user based on type
      * @param   string|null $type
      * @return  Administrator|Doctor|LaboratoryAssistant|Patient|User
-     * @throws  InvalidArgumentException
      */
     public function createProperUser($type = null)
     {
@@ -49,4 +47,4 @@ class UserManagementService
                 break;
         }
     }
-} 
+}

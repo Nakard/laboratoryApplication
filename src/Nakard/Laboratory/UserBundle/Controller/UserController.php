@@ -57,7 +57,7 @@ class UserController extends Controller
         if ($form->isValid()) {
             $flash = $this->get('braincrafted_bootstrap.flash');
 
-            $user->setRegisterDate(new \DateTime());
+            $user->setRegisteredAt(new \DateTime());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
