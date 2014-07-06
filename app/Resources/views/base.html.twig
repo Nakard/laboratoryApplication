@@ -47,17 +47,29 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ path('nakard_laboratory_test_browse') }}">Browse tests</a></li>
-                            <li><a href="#">Schedule new test packet</a></li>
+                            <li>
+                                <a href="{{ path('nakard_laboratory_test_schedule') }}">
+                                    Schedule new test packet
+                                </a>
+                            </li>
                             <li class="divider"></li>
                             <li><a href="{{ path('nakard_laboratory_test_type_browse') }}">Browse test types</a></li>
-                            <li><a href="#">Define new test type</a></li>
+                            <li>
+                                <a href="{{ path('nakard_laboratory_test_type_define') }}">
+                                    Define new test type
+                                </a>
+                            </li>
                             <li class="divider"></li>
                             <li>
                                 <a href="{{ path('nakard_laboratory_test_packet_browse') }}">
                                     Browse test packets
                                 </a>
                             </li>
-                            <li><a href="#">Define new test packet</a></li>
+                            <li>
+                                <a href="{{ path('nakard_laboratory_test_packet_define') }}">
+                                    Define new test packet
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

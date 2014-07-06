@@ -1,18 +1,28 @@
-nakard_laboratory_test_schedule:
-    path:     /schedule
-    defaults: { _controller: NakardLaboratoryTestBundle:Test:schedule }
-
 nakard_laboratory_test_browse:
     path:     /{page}
     defaults: { _controller: NakardLaboratoryTestBundle:Test:index, page: 1 }
     requirements:
         page: \d+
 
+nakard_laboratory_test_schedule:
+    path:     /schedule/{patient}
+    defaults: { _controller: NakardLaboratoryTestBundle:Test:schedule, patient: null }
+    requirements:
+        patient: \d+
+
 nakard_laboratory_test_type_browse:
     path:     /type/{page}
     defaults: { _controller: NakardLaboratoryTestBundle:TestType:index, page: 1 }
     requirements:
         page: \d+
+
+nakard_laboratory_test_type_define:
+    path:     /type/define
+    defaults: { _controller: NakardLaboratoryTestBundle:TestType:define }
+
+nakard_laboratory_test_packet_define:
+    path:     /packet/define
+    defaults: { _controller: NakardLaboratoryTestBundle:TestPacket:define }
 
 nakard_laboratory_test_packet_browse:
     path:     /packet/{page}
