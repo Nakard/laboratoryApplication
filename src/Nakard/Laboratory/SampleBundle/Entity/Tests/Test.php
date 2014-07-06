@@ -1,6 +1,6 @@
 <?php
 
-namespace Nakard\Laboratory\UserBundle\Entity\Tests;
+namespace Nakard\Laboratory\SampleBundle\Entity\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Users\Doctor;
@@ -8,7 +8,9 @@ use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
 
 /**
- * Test
+ * Class Test
+ *
+ * @package Nakard\Laboratory\SampleBundle\Entity\Tests
  */
 class Test
 {
@@ -57,6 +59,9 @@ class Test
      */
     protected $samples;
 
+    /**
+     * Constructs a test
+     */
     public function __construct()
     {
         $this->samples = new ArrayCollection();

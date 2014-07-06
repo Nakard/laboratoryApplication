@@ -1,13 +1,13 @@
 <?php
 
-namespace Nakard\Laboratory\UserBundle\Entity\Tests;
+namespace Nakard\Laboratory\SampleBundle\Entity\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 
 /**
  * Class Sample
- * @package Nakard\Laboratory\UserBundle\Entity\Tests
+ * @package Nakard\Laboratory\SampleBundle\Entity\Tests
  */
 class Sample
 {
@@ -36,6 +36,9 @@ class Sample
      */
     protected $tests;
 
+    /**
+     * Constructs a sample
+     */
     public function __construct()
     {
         $this->tests = new ArrayCollection();
