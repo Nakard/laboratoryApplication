@@ -1,6 +1,6 @@
 <?php
 /**
- * TestPacketType.php
+ * TestPacketDefineType.php
  *
  * Creation date: 2014-07-06
  * Creation time: 19:06
@@ -14,11 +14,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Class TestPacketType
+ * Class TestPacketDefineType
  *
  * @package Nakard\Laboratory\TestBundle\Form\Type
  */
-class TestPacketType extends AbstractType
+class TestPacketDefineType extends AbstractType
 {
     /**
      * @inheritdoc
@@ -28,6 +28,7 @@ class TestPacketType extends AbstractType
         $builder
             ->add('name', 'text')
             ->add('description', 'textarea')
+            ->add('save', 'submit')
         ;
     }
 
@@ -36,6 +37,6 @@ class TestPacketType extends AbstractType
      */
     public function getName()
     {
-        return 'nakard_laboratory_TestBundle_test_packet';
+        return 'nakard_laboratory_TestBundle_test_packet_define';
     }
 }

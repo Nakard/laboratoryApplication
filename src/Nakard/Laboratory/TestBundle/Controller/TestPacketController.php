@@ -10,8 +10,10 @@
 
 namespace Nakard\Laboratory\TestBundle\Controller;
 
-use Nakard\Laboratory\TestBundle\Form\Type\TestPacketType;
+use Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket;
+use Nakard\Laboratory\TestBundle\Form\Type\TestPacketDefineType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class TestPacketController
@@ -42,11 +44,26 @@ class TestPacketController extends Controller
     /**
      * Action for defining new test packet
      *
+     * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function defineAction()
+    public function defineAction(Request $request)
     {
-        $form = $this->createForm(new TestPacketType());
+        $packet = new TestPacket();
+
+        $form = $this->createForm(new TestPacketDefineType(), $packet);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($packet);
+            $manager->flush();
+            $flash->success('Packet successfully created');
+            return $this->redirect($this->generateUrl('nakard_laboratory_test_packet_browse'));
+        }
 
         return $this->render(
             'NakardLaboratoryTestBundle:TestPacket:define.html.twig',

@@ -17,7 +17,8 @@ Nakard\Laboratory\TestBundle\Entity\Tests\TestType:
         createdAt:
             column: created_at
             type: datetime
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [setUpRegisterDate]
     manyToOne:
         packet:
             targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket

@@ -152,4 +152,12 @@ class TestType
     {
         return $this->tests;
     }
+
+    /**
+     * Sets up correct date during creation
+     */
+    public function setUpRegisterDate()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 }

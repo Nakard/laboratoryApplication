@@ -1,0 +1,5 @@
+Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket:
+    constraints:
+          - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+              fields: [name]
+              message: "Packet with this name is already defined"

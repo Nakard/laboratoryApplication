@@ -131,4 +131,12 @@ class TestPacket
     {
         return $this->testTypes;
     }
+
+    /**
+     * Sets up register date during creation
+     */
+    public function setUpRegisterDate()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 }
