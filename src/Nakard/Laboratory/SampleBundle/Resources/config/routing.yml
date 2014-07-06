@@ -1,0 +1,3 @@
+nakard_laboratory_sample_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: NakardLaboratorySampleBundle:Default:index }

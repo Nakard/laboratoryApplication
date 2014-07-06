@@ -1,0 +1,7 @@
+parameters:
+#    nakard_laboratory_sample.example.class: Nakard\Laboratory\SampleBundle\Example
+
+services:
+#    nakard_laboratory_sample.example:
+#        class: %nakard_laboratory_sample.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

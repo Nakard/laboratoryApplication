@@ -1,9 +1,17 @@
+nakard_laboratory_sample:
+    resource: "@NakardLaboratorySampleBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile
+
+nakard_laboratory_user:
+    resource: "@NakardLaboratoryUserBundle/Resources/config/routing.yml"
+    prefix:   /
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
@@ -17,6 +25,3 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
-nakard_laboratory_application:
-    resource: "@NakardLaboratoryUserBundle/Resources/config/routing.yml"
-    prefix:   /

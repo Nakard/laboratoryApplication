@@ -6,6 +6,11 @@ use Nakard\Laboratory\UserBundle\DependencyInjection\Compiler\ValidatorPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Class NakardLaboratoryUserBundle
+ *
+ * @package Nakard\Laboratory\UserBundle
+ */
 class NakardLaboratoryUserBundle extends Bundle
 {
     /**

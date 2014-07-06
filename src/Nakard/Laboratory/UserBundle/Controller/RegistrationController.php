@@ -10,6 +10,7 @@
 
 namespace Nakard\Laboratory\UserBundle\Controller;
 
+use Nakard\Laboratory\UserBundle\Form\Type\UserTypeChooseFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\FOSUserEvents;
@@ -17,6 +18,8 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Model\UserInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Class RegistrationController
@@ -32,6 +35,13 @@ class RegistrationController extends Controller
      */
     public function registerAction(Request $request, $type)
     {
+        if (empty($type)) {
+            $form = $this->createForm(new UserTypeChooseFormType());
+            return $this->render(
+                'NakardLaboratoryUserBundle:Registration:type_choose.html.twig',
+                ['form' => $form->createView()]
+            );
+        }
         $formFactory = $this->get('fos_user.registration.form.factory');
         $userResolver = $this->get('nakard_laboratory_application.user_resolver');
         $userManager = $this->get('fos_user.user_manager');
@@ -78,8 +88,19 @@ class RegistrationController extends Controller
         );
     }
 
+    /**
+     * Notifies user that the account has been confirmed
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     */
     public function confirmedAction()
     {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
 
+        return $this->render('NakardLaboratoryUserBundle:Registration:confirmed.html.twig', ['user' => $user]);
     }
 }
