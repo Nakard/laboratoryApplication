@@ -11,11 +11,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class NakardLaboratorySampleBundle extends Bundle
 {
-    /**
-     * @inheritdoc
-     */
-    public function getParent()
-    {
-        return 'FOSUserBundle';
-    }
+    
 }

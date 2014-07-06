@@ -1,3 +1,7 @@
+nakard_laboratory_test:
+    resource: "@NakardLaboratoryTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 nakard_laboratory_sample:
     resource: "@NakardLaboratorySampleBundle/Resources/config/routing.yml"
     prefix:   /sample

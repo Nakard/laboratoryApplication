@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Nakard\Laboratory\SampleBundle\NakardLaboratorySampleBundle(),
+            new Nakard\Laboratory\TestBundle\NakardLaboratoryTestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
