@@ -8,14 +8,36 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Test count</th>
                 <th>Created</th>
+                <th>Actions</th>
             </tr>
             {% for packet in pagination %}
                 <tr>
                     <td>{{ packet.id }}</td>
                     <td>{{ packet.name }}</td>
                     <td>{{ packet.description }}</td>
+                    <td>{{ packet.testTypes|length }}</td>
                     <td>{{ packet.createdAt|date('Y-m-d H:i') }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Action <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ path('nakard_laboratory_test_packet_assign', { 'packetId': packet.id }) }}">
+                                        Assign test types
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('nakard_laboratory_test_packet_edit', { 'packetId' : packet.id } ) }}">
+                                        Edit packet
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

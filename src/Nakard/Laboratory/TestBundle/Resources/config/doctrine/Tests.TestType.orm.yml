@@ -19,11 +19,11 @@ Nakard\Laboratory\TestBundle\Entity\Tests\TestType:
             type: datetime
     lifecycleCallbacks:
         prePersist: [setUpRegisterDate]
-    manyToOne:
-        packet:
+    manyToMany:
+        packets:
             targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket
-            inversedBy: testTypes
+            mappedBy: testTypes
     oneToMany:
         tests:
             targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
-            mappedBy: type
+            mappedBy: testType

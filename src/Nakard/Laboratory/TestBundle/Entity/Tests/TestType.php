@@ -40,9 +40,9 @@ class TestType
     protected $createdAt;
 
     /**
-     * @var TestPacket
+     * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    protected $packet;
+    protected $packets;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -55,6 +55,7 @@ class TestType
     public function __construct()
     {
         $this->tests = new ArrayCollection();
+        $this->packets = new ArrayCollection();
     }
 
     /**
@@ -124,17 +125,17 @@ class TestType
     /**
      * @param \Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket $packet
      */
-    public function setPacket($packet)
+    public function addPacket(TestPacket $packet)
     {
-        $this->packet = $packet;
+        $this->packets[] = $packet;
     }
 
     /**
      * @return \Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket
      */
-    public function getPacket()
+    public function getPackets()
     {
-        return $this->packet;
+        return $this->packets;
     }
 
     /**

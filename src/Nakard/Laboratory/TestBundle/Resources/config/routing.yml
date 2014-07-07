@@ -20,12 +20,31 @@ nakard_laboratory_test_type_define:
     path:     /type/define
     defaults: { _controller: NakardLaboratoryTestBundle:TestType:define }
 
+nakard_laboratory_test_type_edit:
+    path:     /type/edit/{typeId}
+    defaults : { _controller: NakardLaboratoryTestBundle:TestType:edit }
+    requirements:
+        typeId: \d+
+
 nakard_laboratory_test_packet_define:
     path:     /packet/define
     defaults: { _controller: NakardLaboratoryTestBundle:TestPacket:define }
+
+nakard_laboratory_test_packet_assign:
+    path:     /packet/assign/{packetId}
+    defaults: { _controller: NakardLaboratoryTestBundle:TestPacket:assign }
+    requirements:
+        packetId: \d+
+
+nakard_laboratory_test_packet_edit:
+    path:     /packet/edit/{packetId}
+    defaults: { _controller: NakardLaboratoryTestBundle:TestPacket:edit }
+    requirements:
+        packetId: \d+
 
 nakard_laboratory_test_packet_browse:
     path:     /packet/{page}
     defaults: { _controller: NakardLaboratoryTestBundle:TestPacket:index, page: 1 }
     requirements:
         page: \d+
+
