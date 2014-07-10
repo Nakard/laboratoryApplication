@@ -11,7 +11,8 @@ Nakard\Laboratory\SampleBundle\Entity\Samples\Sample:
     fields:
         admittedAt:
             type: datetime
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [setUpAdmitionDate]
     manyToOne:
         patient:
             targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\Patient

@@ -25,7 +25,8 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-menu-bundle": "2.0.*@dev",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "bluerhinos/phpmqtt": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

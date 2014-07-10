@@ -8,10 +8,11 @@
                 <th>Patient</th>
                 <th>Scheduler</th>
                 <th>Conductor</th>
+                <th>Type</th>
                 <th>Value</th>
+                <th>Sample</th>
                 <th>Registered</th>
                 <th>Conducted</th>
-                <th>Type</th>
             </tr>
             {% for test in pagination %}
             <tr>
@@ -19,10 +20,11 @@
                 <td>{{ test.patient.getCredentials }}</td>
                 <td>{% if test.scheduler %}{{ test.scheduler.getCredentials }}{% endif %}</td>
                 <td>{% if test.labAssistant %}{{ test.labAssistant.getCredentials }}{% endif %}</td>
+                <td>{{ test.testType.name }}</td>
                 <td>{{ test.value }}</td>
+                <td>{% if test.sample %}<span class="glyphicon glyphicon-ok-sign"></span>{% endif %}</td>
                 <td>{{ test.registerDate|date('Y-m-d H:i') }}</td>
                 <td>{% if test.conductDate%}{{ test.conductDate|date('Y-m-d H:i') }}{% endif %}</td>
-                <td>{{ test.testType.name }}</td>
             </tr>
             {% endfor %}
         </table>

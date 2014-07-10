@@ -56,8 +56,13 @@ class SampleController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-
+        if ($form->isSubmitted()) {
+            $service = $this->get('nakard_laboratory_sample.admition_service');
+            $data = $form->getData();
+            $patient = $data['patient'];
+            $sampleType = $data['sampleType'];
+            $service->admitSample($patient, $sampleType);
+            return $this->redirect($this->generateUrl('nakard_laboratory_sample_browse'));
         }
 
         return $this->render(

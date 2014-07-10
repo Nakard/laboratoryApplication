@@ -142,4 +142,12 @@ class Sample
     {
         return $this->tests;
     }
+
+    /**
+     * Sets up admition date during sample admition
+     */
+    public function setUpAdmitionDate()
+    {
+        $this->setAdmittedAt(new \DateTime());
+    }
 }
