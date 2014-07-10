@@ -1,0 +1,14 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+{{ form(form, { 'style': 'horizontal', 'attr': {'id': 'form'} }) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('#nakard_laboratory_testBundle_perform_assistant_select_assistant').change(function(){
+            $('#form').attr('action', '{{ url('nakard_laboratory_test_perform') }}/'+$(this).val())
+        });
+    </script>
+{% endblock %}

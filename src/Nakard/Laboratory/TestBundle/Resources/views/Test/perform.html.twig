@@ -1,0 +1,12 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    <h3>Tests perform</h3>
+
+{{ form_start(form, { 'style': 'horizontal' }) }}
+{{ form_errors(form) }}
+{% for test in form.assignedTests %}
+    {{ form_row(test.value, { 'label': test.vars.value.testType.name ~ '(#' ~ test.vars.value.sample.id ~ ')' } ) }}
+{% endfor %}
+{{ form_widget(form.save) }}
+{% endblock %}

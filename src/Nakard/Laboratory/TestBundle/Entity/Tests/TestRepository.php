@@ -4,6 +4,7 @@ namespace Nakard\Laboratory\TestBundle\Entity\Tests;
 
 use Doctrine\ORM\EntityRepository;
 use Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType;
+use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 
 /**
@@ -33,6 +34,29 @@ class TestRepository extends EntityRepository
             ->setParameter('sampleType', $sampleType)
             ->setParameter('patient', $patient)
         ;
+
+        return $query->getQuery()->execute();
+    }
+
+    /**
+     * Finds yet unconducted tests
+     *
+     * @param LaboratoryAssistant $assistant
+     *
+     * @return mixed
+     */
+    public function findUnconducted(LaboratoryAssistant $assistant = null)
+    {
+        $query = $this->getEntityManager()->createQueryBuilder();
+        $query
+            ->select('t')
+            ->from('NakardLaboratoryTestBundle:Tests\Test', 't')
+            ->where('t.conductDate IS NULL');
+        if (!is_null($assistant)) {
+            $query
+                ->andWhere('t.labAssistant = :assistant')
+                ->setParameter('assistant', $assistant);
+        }
 
         return $query->getQuery()->execute();
     }

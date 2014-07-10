@@ -4,6 +4,12 @@ nakard_laboratory_test_browse:
     requirements:
         page: \d+
 
+nakard_laboratory_test_perform:
+    path:     /perform/{assistantId}
+    defaults: { _controller: NakardLaboratoryTestBundle:Test:perform, assistantId: 0 }
+    requirements:
+        assistantId: \d+
+
 nakard_laboratory_test_schedule:
     path:     /schedule
     defaults: { _controller: NakardLaboratoryTestBundle:Test:schedule }

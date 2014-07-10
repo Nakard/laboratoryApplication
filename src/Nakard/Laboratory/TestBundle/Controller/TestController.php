@@ -10,8 +10,11 @@
 
 namespace Nakard\Laboratory\TestBundle\Controller;
 
+use Mosquitto\Client;
 use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 use Nakard\Laboratory\TestBundle\Form\Type\TestPacketScheduleType;
+use Nakard\Laboratory\TestBundle\Form\Type\TestPerformPatientSelectType;
+use Nakard\Laboratory\TestBundle\Form\Type\TestPerformType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
@@ -84,6 +87,31 @@ class TestController extends Controller
 
         return $this->render(
             'NakardLaboratoryTestBundle:Test:schedule.html.twig',
+            ['form' => $form->createView()]
+        );
+    }
+
+    public function performAction(Request $request, $assistantId)
+    {
+        if (0 === $assistantId) {
+            $form = $this->createForm(new TestPerformPatientSelectType());
+            return $this->render(
+                'NakardLaboratoryTestBundle:Test:assistant_select.html.twig',
+                ['form' => $form->createView()]
+            );
+        }
+        $assistant = $this
+            ->getDoctrine()
+            ->getRepository('Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant')
+            ->find($assistantId);
+        $repository = $this->getDoctrine()->getRepository('Nakard\Laboratory\TestBundle\Entity\Tests\Test');
+        $form = $this->createForm(
+            new TestPerformType(),
+            $assistant
+        );
+
+        return $this->render(
+            'NakardLaboratoryTestBundle:Test:perform.html.twig',
             ['form' => $form->createView()]
         );
     }

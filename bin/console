@@ -24,4 +24,6 @@ if ($debug) {
 
 $kernel = new AppKernel($env, $debug);
 $application = new Application($kernel);
+$application->add(new \Nakard\Laboratory\TestBundle\Console\Command\TestPublishMqttCommand());
+$application->add(new \Nakard\Laboratory\TestBundle\Console\Command\StartMqttCommand());
 $application->run($input);

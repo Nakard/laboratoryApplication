@@ -3,6 +3,7 @@
 namespace Nakard\Laboratory\TestBundle\Entity\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Mosquitto\Client;
 use Nakard\Laboratory\UserBundle\Entity\Users\Doctor;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;

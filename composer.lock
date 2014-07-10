@@ -4,36 +4,8 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "97fcfc21495bb41cef6d970762bc0c31",
+    "hash": "dfa8438ae7eee3a2d9a96189dee610a1",
     "packages": [
-        {
-            "name": "bluerhinos/phpmqtt",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bluerhinos/phpMQTT.git",
-                "reference": "859a59a7b3e6ade44919e54d60cdaccc3356cbf2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bluerhinos/phpMQTT/zipball/859a59a7b3e6ade44919e54d60cdaccc3356cbf2",
-                "reference": "859a59a7b3e6ade44919e54d60cdaccc3356cbf2",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Andrew Milsted",
-                    "email": "andrew@bluerhinos.co.uk"
-                }
-            ],
-            "description": "Simple MQTT Class",
-            "time": "2014-06-12 07:47:25"
-        },
         {
             "name": "braincrafted/bootstrap-bundle",
             "version": "v2.0.1",
@@ -1357,6 +1329,61 @@
                 "psr-3"
             ],
             "time": "2014-06-04 16:30:04"
+        },
+        {
+            "name": "predis/predis",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "235427950f1a280867d3667213e4a4cd23f19fe0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/235427950f1a280867d3667213e4a4cd23f19fe0",
+                "reference": "235427950f1a280867d3667213e4a4cd23f19fe0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Predis": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Flexible and feature-complete PHP client library for Redis",
+            "homepage": "http://github.com/nrk/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "time": "2014-07-07 09:50:37"
         },
         {
             "name": "psr/log",
@@ -2976,7 +3003,7 @@
         "knplabs/knp-menu": 20,
         "knplabs/knp-menu-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
-        "bluerhinos/phpmqtt": 20
+        "predis/predis": 20
     },
     "platform": {
         "php": ">=5.3.3"
