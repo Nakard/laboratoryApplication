@@ -270,4 +270,12 @@ class Test
     {
         return $this->samples;
     }
+
+    /**
+     * Sets up register date during creation
+     */
+    public function setUpRegisterDate()
+    {
+        $this->setRegisterDate(new \DateTime());
+    }
 }

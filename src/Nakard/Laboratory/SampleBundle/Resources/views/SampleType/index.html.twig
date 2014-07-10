@@ -1,0 +1,50 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    {% if pagination.getTotalItemCount %}
+        <table class="table table-bordered table-striped text-left">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Creation date</th>
+                <th>Test type</th>
+                <th>Actions</th>
+            </tr>
+            {% for sampleType in pagination %}
+                <tr>
+                    <td>{{ sampleType.id }}</td>
+                    <td>{{ sampleType.name }}</td>
+                    <td>{{ sampleType.description }}</td>
+                    <td>{{ sampleType.createdAt|date('Y-m-d H:i') }}</td>
+                    <td>{{ sampleType.testTypes|length }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Action <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ path('nakard_laboratory_sample_type_edit',
+                                    { 'sampleTypeId' : sampleType.id } ) }}">
+                                        Edit sample type
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('nakard_laboratory_sample_type_remove', { 'sampleTypeId': sampleType.id }) }}">
+                                        Remove sample type
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <h1>No sample types defined</h1>
+    {% endif %}
+{% endblock %}

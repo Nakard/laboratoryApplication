@@ -7,6 +7,7 @@ Nakard\Laboratory\UserBundle\Entity\Users\Patient:
         tests:
             targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
             mappedBy: patient
+            cascade: [persist]
         samples:
             targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\Sample
             mappedBy: patient

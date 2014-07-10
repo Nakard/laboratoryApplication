@@ -11,13 +11,13 @@ Nakard\Laboratory\SampleBundle\Entity\Samples\Sample:
     fields:
         admittedAt:
             type: datetime
-        type:
-            type: string
-            length: 255
     lifecycleCallbacks: {  }
     manyToOne:
         patient:
             targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\Patient
+            inversedBy: samples
+        sampleType:
+            targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType
             inversedBy: samples
     manyToMany:
         tests:

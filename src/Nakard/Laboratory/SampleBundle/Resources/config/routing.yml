@@ -1,3 +1,29 @@
-nakard_laboratory_sample_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: NakardLaboratorySampleBundle:Default:index }
+nakard_laboratory_sample_browse:
+    path:     /
+    defaults: { _controller: NakardLaboratorySampleBundle:Sample:index }
+
+nakard_laboratory_sample_admit:
+    path:     /admit
+    defaults: { _controller: NakardLaboratorySampleBundle:Sample:admit }
+
+nakard_laboratory_sample_type_browse:
+    path:     /type/{page}
+    defaults: { _controller: NakardLaboratorySampleBundle:SampleType:index, page: 1 }
+    requirements:
+        page: \d+
+
+nakard_laboratory_sample_type_define:
+    path:     /type/define
+    defaults: { _controller: NakardLaboratorySampleBundle:SampleType:define }
+
+nakard_laboratory_sample_type_edit:
+    path:     /type/edit/{sampleTypeId}
+    defaults: { _controller: NakardLaboratorySampleBundle:SampleType:edit }
+    requirements:
+        sampleTypeId: \d+
+
+nakard_laboratory_sample_type_remove:
+    path:     /type/remove/{sampleTypeId}
+    defaults: { _controller: NakardLaboratorySampleBundle:SampleType:remove }
+    requirements:
+        sampleTypeId: \d+

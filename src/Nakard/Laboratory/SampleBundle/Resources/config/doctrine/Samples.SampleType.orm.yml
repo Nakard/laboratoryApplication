@@ -1,0 +1,34 @@
+Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType:
+    type: entity
+    table: sample_types
+    repositoryClass: Nakard\Laboratory\SampleBundle\Entity\Samples\SampleTypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        createdAt:
+            column: created_at
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [setUpCreationDate]
+    oneToMany:
+        testTypes:
+            targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\TestType
+            mappedBy: sampleType
+            joinColumn:
+                name: test_type_id
+                referencedColumnName: id
+        samples:
+            targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\Sample
+            mappedBy: sampleType
+            joinColumn:
+                name: sample_type_id
+                referencedColumnName: id

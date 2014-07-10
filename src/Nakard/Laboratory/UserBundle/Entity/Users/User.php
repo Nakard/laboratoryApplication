@@ -222,4 +222,13 @@ class User extends BaseUser
     {
         $this->setRegisteredAt(new \DateTime());
     }
+
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getCredentials();
+    }
 }

@@ -5,10 +5,8 @@ nakard_laboratory_test_browse:
         page: \d+
 
 nakard_laboratory_test_schedule:
-    path:     /schedule/{patient}
-    defaults: { _controller: NakardLaboratoryTestBundle:Test:schedule, patient: null }
-    requirements:
-        patient: \d+
+    path:     /schedule
+    defaults: { _controller: NakardLaboratoryTestBundle:Test:schedule }
 
 nakard_laboratory_test_type_browse:
     path:     /type/{page}

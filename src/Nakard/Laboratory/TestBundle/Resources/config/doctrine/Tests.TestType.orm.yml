@@ -27,3 +27,10 @@ Nakard\Laboratory\TestBundle\Entity\Tests\TestType:
         tests:
             targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
             mappedBy: testType
+    manyToOne:
+        sampleType:
+            targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType
+            inversedBy: testTypes
+            joinColumn:
+                name: sample_type_id
+                referencedColumnName: id

@@ -11,13 +11,18 @@ Nakard\Laboratory\TestBundle\Entity\Tests\Test:
     fields:
         value:
             type: decimal
+            precision: 10
+            scale: 2
+            nullable: true
         registerDate:
             column: register_date
             type: datetime
         conductDate:
             column: conduct_date
+            nullable: true
             type: datetime
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [setUpRegisterDate]
     manyToOne:
         patient:
             targetEntity: Nakard\Laboratory\UserBundle\Entity\Users\Patient

@@ -1,7 +1,6 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-
     {% if pagination.getTotalItemCount %}
         <table class="table table-bordered table-striped text-left">
             <tr>
@@ -18,12 +17,12 @@
             <tr>
                 <td>{{ test.id }}</td>
                 <td>{{ test.patient.getCredentials }}</td>
-                <td>{{ test.doctor.getCredentials }}</td>
-                <td>{{ test.labAssistant.getCredentials }}</td>
+                <td>{% if test.scheduler %}{{ test.scheduler.getCredentials }}{% endif %}</td>
+                <td>{% if test.labAssistant %}{{ test.labAssistant.getCredentials }}{% endif %}</td>
                 <td>{{ test.value }}</td>
                 <td>{{ test.registerDate|date('Y-m-d H:i') }}</td>
-                <td>{{ test.conductDate|date('Y-m-d H:i') }}</td>
-                <td>{{ test.type.name }}</td>
+                <td>{% if test.conductDate%}{{ test.conductDate|date('Y-m-d H:i') }}{% endif %}</td>
+                <td>{{ test.testType.name }}</td>
             </tr>
             {% endfor %}
         </table>

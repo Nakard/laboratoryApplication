@@ -11,6 +11,7 @@
 namespace Nakard\Laboratory\TestBundle\Entity\Tests;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType;
 
 /**
  * Class TestType
@@ -48,6 +49,11 @@ class TestType
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $tests;
+
+    /**
+     * @var SampleType
+     */
+    protected $sampleType;
 
     /**
      * Creates new test type
@@ -160,5 +166,37 @@ class TestType
     public function setUpRegisterDate()
     {
         $this->setCreatedAt(new \DateTime());
+    }
+
+    /**
+     * @param \Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType $sampleType
+     */
+    public function setSampleType(SampleType $sampleType)
+    {
+        $this->sampleType = $sampleType;
+    }
+
+    /**
+     * @return \Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType
+     */
+    public function getSampleType()
+    {
+        return $this->sampleType;
+    }
+
+    /**
+     * Sets sample type to null
+     */
+    public function removeSampleType()
+    {
+        $this->sampleType = null;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

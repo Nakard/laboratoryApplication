@@ -4,6 +4,7 @@ namespace Nakard\Laboratory\SampleBundle\Entity\Samples;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
+use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 
 /**
  * Class Sample
@@ -22,9 +23,9 @@ class Sample
     protected $admittedAt;
 
     /**
-     * @var string
+     * @var SampleType
      */
-    protected $type;
+    protected $sampleType;
 
     /**
      * @var Patient
@@ -80,12 +81,12 @@ class Sample
     /**
      * Set type
      *
-     * @param string $type
+     * @param  SampleType $type
      * @return Sample
      */
-    public function setType($type)
+    public function setSampleType($type)
     {
-        $this->type = $type;
+        $this->sampleType = $type;
 
         return $this;
     }
@@ -93,11 +94,11 @@ class Sample
     /**
      * Get type
      *
-     * @return string 
+     * @return SampleType
      */
-    public function getType()
+    public function getSampleType()
     {
-        return $this->type;
+        return $this->sampleType;
     }
 
     /**
