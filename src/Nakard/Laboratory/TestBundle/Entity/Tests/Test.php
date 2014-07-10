@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Nakard\Laboratory\UserBundle\Entity\Users\Doctor;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
+use Nakard\Laboratory\SampleBundle\Entity\Samples\Sample;
 
 /**
  * Class Test
@@ -55,17 +56,9 @@ class Test
     protected $conductDate;
 
     /**
-     * @var ArrayCollection
+     * @var Sample
      */
-    protected $samples;
-
-    /**
-     * Constructs a test
-     */
-    public function __construct()
-    {
-        $this->samples = new ArrayCollection();
-    }
+    protected $sample;
 
     /**
      * Get id
@@ -241,34 +234,25 @@ class Test
     /**
      * Set samples
      *
-     * @param  ArrayCollection $samples
+     * @param  Sample $sample
+     *
      * @return Test
      */
-    public function setSamples($samples)
+    public function setSample($sample)
     {
-        $this->samples = $samples;
+        $this->sample = $sample;
 
         return $this;
     }
 
     /**
-     * Adds sample to the test
-     *
-     * @param $sample
-     */
-    public function addSample($sample)
-    {
-        $this->samples[] = $sample;
-    }
-
-    /**
      * Get samples
      *
-     * @return array 
+     * @return Sample
      */
-    public function getSamples()
+    public function getSample()
     {
-        return $this->samples;
+        return $this->sample;
     }
 
     /**

@@ -1,0 +1,29 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    {% if pagination.getTotalItemCount %}
+        <table class="table table-bordered table-striped text-left">
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Sample type</th>
+                <th>Used in # tests</th>
+                <th>Admition date</th>
+            </tr>
+            {% for sample in pagination %}
+                <tr>
+                    <td>{{ sample.id }}</td>
+                    <td>{{ sample.patient.getCredentials }}</td>
+                    <td>{{ sample.sampleType.name }}</td>
+                    <td>{{ sample.tests|length }}</td>
+                    <td>{{ sample.admittedAt|date('Y-m-d H:i') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <h1>No samples admitted</h1>
+    {% endif %}
+{% endblock %}

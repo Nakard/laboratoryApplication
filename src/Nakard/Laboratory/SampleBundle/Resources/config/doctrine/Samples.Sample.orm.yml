@@ -19,7 +19,7 @@ Nakard\Laboratory\SampleBundle\Entity\Samples\Sample:
         sampleType:
             targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType
             inversedBy: samples
-    manyToMany:
+    oneToMany:
         tests:
             targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\Test
-            mappedBy: samples
+            mappedBy: sample

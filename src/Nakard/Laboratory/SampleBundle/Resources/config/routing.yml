@@ -1,6 +1,8 @@
 nakard_laboratory_sample_browse:
-    path:     /
-    defaults: { _controller: NakardLaboratorySampleBundle:Sample:index }
+    path:     /{page}
+    defaults: { _controller: NakardLaboratorySampleBundle:Sample:index, page: 1 }
+    requirements:
+        page: \d+
 
 nakard_laboratory_sample_admit:
     path:     /admit

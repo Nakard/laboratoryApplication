@@ -38,7 +38,6 @@ Nakard\Laboratory\TestBundle\Entity\Tests\Test:
             joinColumn: test_type_id
             targetEntity: Nakard\Laboratory\TestBundle\Entity\Tests\TestType
             inversedBy: tests
-    manyToMany:
-        samples:
+        sample:
             targetEntity: Nakard\Laboratory\SampleBundle\Entity\Samples\Sample
             inversedBy: tests
