@@ -11,7 +11,6 @@
 namespace Nakard\Laboratory\TestBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Mosquitto\Client;
 use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 use Nakard\Laboratory\TestBundle\Form\Type\TestPacketScheduleType;
 use Nakard\Laboratory\TestBundle\Form\Type\TestPerformPatientSelectType;
@@ -92,6 +91,14 @@ class TestController extends Controller
         );
     }
 
+    /**
+     * Performs tests assigned to selected assistant
+     *
+     * @param Request $request
+     * @param int     $assistantId
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function performAction(Request $request, $assistantId)
     {
         if (0 === $assistantId) {
