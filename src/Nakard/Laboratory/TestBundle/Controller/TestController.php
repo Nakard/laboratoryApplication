@@ -10,6 +10,7 @@
 
 namespace Nakard\Laboratory\TestBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Mosquitto\Client;
 use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 use Nakard\Laboratory\TestBundle\Form\Type\TestPacketScheduleType;
@@ -105,14 +106,32 @@ class TestController extends Controller
             ->getRepository('Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant')
             ->find($assistantId);
         $repository = $this->getDoctrine()->getRepository('Nakard\Laboratory\TestBundle\Entity\Tests\Test');
+        $toConductTests = new ArrayCollection($repository->findUnconducted($assistant));
+        $testsIds = array_map(function (Test $elem) {
+            return $elem->getId();
+        }, $toConductTests->toArray());
+        $assistant->setAssignedTests($toConductTests);
         $form = $this->createForm(
             new TestPerformType(),
             $assistant
         );
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $manager = $this->getDoctrine()->getManager();
+            /** @var Test $test */
+            foreach ($toConductTests as $test) {
+                $test->setConductDate(new \DateTime());
+                $manager->persist($test);
+            }
+            $manager->flush();
+            return $this->redirect($this->generateUrl('nakard_laboratory_test_browse'));
+        }
+
         return $this->render(
             'NakardLaboratoryTestBundle:Test:perform.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form->createView(), 'testsIds' => $testsIds]
         );
     }
 }

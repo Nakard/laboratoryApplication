@@ -4,6 +4,9 @@ parameters:
     nakard_laboratory_test.mosquitto.broker: localhost
     nakard_laboratory_test.mosquitto.port: 1883
     nakard_laboratory_test.mosquitto.client.id: laboratory
+    nakard_laboratory_test.redis.class: Predis\Client
+    nakard_laboratory_test.redis.uri: tcp://127.0.0.1:6379
+
 
 services:
 #    nakard_laboratory_test.example:
@@ -14,3 +17,6 @@ services:
         arguments: ['%nakard_laboratory_test.mosquitto.client.id%']
         calls:
             - [connect, ['%nakard_laboratory_test.mosquitto.broker%', '%nakard_laboratory_test.mosquitto.port%', 60]]
+    nakard_laboratory_test.redis:
+        class: '%nakard_laboratory_test.redis.class%'
+        arguments: [%nakard_laboratory_test.redis.uri%]

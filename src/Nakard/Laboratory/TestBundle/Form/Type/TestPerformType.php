@@ -10,11 +10,9 @@
 
 namespace Nakard\Laboratory\TestBundle\Form\Type;
 
-use Nakard\Laboratory\TestBundle\Entity\Tests\TestRepository;
-use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 
 /**
  * Class TestPerformType
@@ -23,7 +21,6 @@ use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
  */
 class TestPerformType extends AbstractType
 {
-
     /**
      * @inheritdoc
      */

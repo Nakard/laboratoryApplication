@@ -45,11 +45,21 @@ class LaboratoryAssistant extends User
      * @param   Test                $test
      * @return  LaboratoryAssistant
      */
-    public function assignToTest(Test $test)
+    public function addAssignedTest(Test $test)
     {
         $this->assignedTests[] = $test;
 
         return $this;
+    }
+
+    /**
+     * Sets a collection of tests as assigned
+     *
+     * @param ArrayCollection $tests
+     */
+    public function setAssignedTests(ArrayCollection $tests)
+    {
+        $this->assignedTests = $tests;
     }
 
     /**

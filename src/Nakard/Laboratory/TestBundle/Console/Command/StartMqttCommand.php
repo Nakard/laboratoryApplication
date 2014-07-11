@@ -16,6 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Mosquitto\Message;
+use Predis\Client;
 
 /**
  * Class StartMqttCommand
@@ -40,9 +41,16 @@ class StartMqttCommand extends Command implements ContainerAwareInterface
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        /** @var Client $redis */
+        $redis = $this->container->get('nakard_laboratory_test.redis');
         $mqtt = $this->container->get('nakard_laboratory_test.mosquitto.subscriber');
-        $mqtt->onMessage(function (Message $message) use($output) {
-            $output->writeln($message->topic . ': ' . $message->payload);
+        $mqtt->onMessage(function (Message $message) use($redis, $output) {
+            preg_match('/\d+/', $message->topic, $matches);
+            $id = $matches[0];
+            $key = 'test:' . $id;
+            $output->writeln($message->topic . ': ' . $message->payload . ', id: ' . $id);
+            $redis->hset($key, 'value', $message->payload);
+            $redis->hset($key, 'timestamp', time());
         });
         $mqtt->subscribe('#', 1);
         $mqtt->loopForever();

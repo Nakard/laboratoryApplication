@@ -4,6 +4,11 @@ nakard_laboratory_test_browse:
     requirements:
         page: \d+
 
+nakard_laboratory_test_fetch:
+    path:     /fetch
+    defaults: { _controller: NakardLaboratoryTestBundle:Redis:fetch }
+    methods: [POST]
+
 nakard_laboratory_test_perform:
     path:     /perform/{assistantId}
     defaults: { _controller: NakardLaboratoryTestBundle:Test:perform, assistantId: 0 }

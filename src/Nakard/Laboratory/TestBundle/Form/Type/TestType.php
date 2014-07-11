@@ -27,7 +27,6 @@ class TestType extends AbstractType
     {
         $builder
             ->add('value')
-            ->add('id', 'hidden')
         ;
     }
 
