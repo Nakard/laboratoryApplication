@@ -31,83 +31,118 @@
         </div>
         <div class="collapse navbar-collapse">
             {% block menu %}
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Users <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ path('nakard_laboratory_application_users_index') }}">Browse users</a></li>
-                            <li><a href="{{ path('nakard_laboratory_application_registration') }}">Add a new user</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Tests <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ path('nakard_laboratory_test_browse') }}">Browse tests</a></li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_test_schedule') }}">
-                                    Schedule new test packet
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="{{ path('nakard_laboratory_test_type_browse') }}">Browse test types</a></li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_test_type_define') }}">
-                                    Define new test type
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_test_packet_browse') }}">
-                                    Browse test packets
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_test_packet_define') }}">
-                                    Define new test packet
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_test_perform') }}">
-                                    Perform tests
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Samples <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ path('nakard_laboratory_sample_browse') }}">
-                                    Browse samples
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_sample_admit') }}">
-                                    Admit a new sample
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_sample_type_browse') }}">
-                                    Browse sample types
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('nakard_laboratory_sample_type_define') }}">
-                                    Define a new sample type
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            {% endblock %}
+            <ul class="nav navbar-nav">
+                {% if app.security.isGranted('ROLE_ADMIN') %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Users <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ path('nakard_laboratory_application_users_index') }}">Browse users</a></li>
+                        <li><a href="{{ path('nakard_laboratory_application_users_add') }}">Add a new user</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if app.security.isGranted('ROLE_USER') %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Tests <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ path('nakard_laboratory_test_browse') }}">Browse tests</a></li>
+                        {% endif %}
+                        {% if app.security.isGranted('ROLE_DOCTOR', 'ROLE_PATIENT') %}
+                        <li>
+                            <a href="{{ path('nakard_laboratory_test_schedule') }}">
+                                Schedule new test packet
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if app.security.isGranted('ROLE_ADMIN') %}
+                        <li class="divider"></li>
+                        <li><a href="{{ path('nakard_laboratory_test_type_browse') }}">Browse test types</a></li>
+                        <li>
+                            <a href="{{ path('nakard_laboratory_test_type_define') }}">
+                                Define new test type
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ path('nakard_laboratory_test_packet_browse') }}">
+                                Browse test packets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('nakard_laboratory_test_packet_define') }}">
+                                Define new test packet
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if app.security.isGranted('ROLE_ASSISTANT') %}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ path('nakard_laboratory_test_perform') }}">
+                                Perform tests
+                            </a>
+                        </li>
+
+                    </ul>
+                    {% endif %}
+                </li>
+                {% if app.security.isGranted('ROLE_ADMIN', 'ROLE_ASSISTANT', 'ROLE_PATIENT') %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Samples <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ path('nakard_laboratory_sample_browse') }}">
+                                Browse samples
+                            </a>
+                        </li>
+                        {% if app.security.isGranted('ROLE_ADMIN', 'ROLE_ASSISTANT') %}
+                        <li>
+                            <a href="{{ path('nakard_laboratory_sample_admit') }}">
+                                Admit a new sample
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if app.security.isGranted('ROLE_ADMIN') %}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ path('nakard_laboratory_sample_type_browse') }}">
+                                Browse sample types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('nakard_laboratory_sample_type_define') }}">
+                                Define a new sample type
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+        {% endblock %}
+        {% block user_data %}
+            {% if app.user %}
+            <ul class="nav navbar-nav navbar-right">
+                <p class="navbar-text">
+                    Logged as: {{ app.user.username }} ({{ app.user.getTypeName }})
+                </p>
+                <a href="{{ url('fos_user_security_logout') }}" class="navbar-btn btn btn-primary">
+                    Logout
+                </a>
+            </ul>
+            {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <a href="{{ url('fos_user_security_login') }}" class="navbar-btn btn btn-primary">
+                    Login
+                </a>
+            </ul>
+            {% endif %}
+        {% endblock %}
         </div><!--/.nav-collapse -->
     </div>
 </div>

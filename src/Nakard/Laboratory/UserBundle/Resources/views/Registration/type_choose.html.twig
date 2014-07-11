@@ -10,7 +10,7 @@
     {{ parent() }}
     <script type="text/javascript">
         $('#nakard_laboratory_UserBundle_choose_user_type_type').change(function () {
-            $('#form').attr('action', '{{ url('nakard_laboratory_application_registration') }}/'+ $(this).val());
+            $('#form').attr('action', '{{ url('nakard_laboratory_application_users_add') }}/'+ $(this).val());
         });
     </script>
 {% endblock %}

@@ -11,6 +11,7 @@
 namespace Nakard\Laboratory\UserBundle\Controller;
 
 use Nakard\Laboratory\UserBundle\Form\Type\UserTypeChooseFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\FOSUserEvents;
@@ -28,12 +29,15 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class RegistrationController extends Controller
 {
     /**
+     * Adds a user of selected type, only for admins
+     *
      * @param Request   $request
      * @param string    $type
      *
      * @return null|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|void
+     * @Security("has_role('ROLE_ADMIN')")
      */
-    public function registerAction(Request $request, $type)
+    public function addAction(Request $request, $type)
     {
         if (empty($type)) {
             $form = $this->createForm(new UserTypeChooseFormType());
@@ -66,7 +70,7 @@ class RegistrationController extends Controller
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-                $user->addRole('ROLE_' . strtoupper($type));
+                $user->addRespectiveRoles($type);
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
@@ -74,10 +78,10 @@ class RegistrationController extends Controller
                     $response = new RedirectResponse($url);
                 }
 
-                $dispatcher->dispatch(
+/*                $dispatcher->dispatch(
                     FOSUserEvents::REGISTRATION_COMPLETED,
                     new FilterUserResponseEvent($user, $request, $response)
-                );
+                );*/
 
                 return $response;
             }

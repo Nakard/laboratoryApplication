@@ -4,9 +4,9 @@ nakard_laboratory_application_users_index:
     requirements:
         page: \d+
 
-nakard_laboratory_application_registration:
-    path:     /register/{type}
-    defaults: { _controller: NakardLaboratoryUserBundle:Registration:register, type: ''}
+nakard_laboratory_application_users_add:
+    path:     /add/{type}
+    defaults: { _controller: NakardLaboratoryUserBundle:Registration:add, type: ''}
     requirements:
         type: doctor|patient|admin|assistant
 
