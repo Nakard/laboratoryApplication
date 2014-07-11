@@ -51,7 +51,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('nakard_laboratory_test_browse') }}">Browse tests</a></li>
                         {% endif %}
-                        {% if app.security.isGranted('ROLE_DOCTOR', 'ROLE_PATIENT') %}
+                        {% if app.security.isGranted('ROLE_DOCTOR') or app.security.isGranted('ROLE_PATIENT') %}
                         <li>
                             <a href="{{ path('nakard_laboratory_test_schedule') }}">
                                 Schedule new test packet
@@ -89,7 +89,11 @@
                     </ul>
                     {% endif %}
                 </li>
-                {% if app.security.isGranted('ROLE_ADMIN', 'ROLE_ASSISTANT', 'ROLE_PATIENT') %}
+                {% if
+                    app.security.isGranted('ROLE_ADMIN') or
+                    app.security.isGranted('ROLE_ASSISTANT') or
+                    app.security.isGranted('ROLE_PATIENT')
+                %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Samples <span class="caret"></span>
@@ -100,7 +104,7 @@
                                 Browse samples
                             </a>
                         </li>
-                        {% if app.security.isGranted('ROLE_ADMIN', 'ROLE_ASSISTANT') %}
+                        {% if app.security.isGranted('ROLE_ADMIN') or app.security.isGranted('ROLE_ASSISTANT') %}
                         <li>
                             <a href="{{ path('nakard_laboratory_sample_admit') }}">
                                 Admit a new sample
