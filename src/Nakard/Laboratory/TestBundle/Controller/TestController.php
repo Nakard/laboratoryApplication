@@ -39,7 +39,7 @@ class TestController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('Nakard\Laboratory\TestBundle\Entity\Tests\Test');
 
-        $tests = $repository->findAll();
+        $tests = $repository->findAllForIndexAction();
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($tests, $page, 10);

@@ -60,4 +60,24 @@ class TestRepository extends EntityRepository
 
         return $query->getQuery()->execute();
     }
+
+    /**
+     * Finds all tests for TestController index action
+     *
+     * @return mixed
+     */
+    public function findAllForIndexAction()
+    {
+        $query = $this->getEntityManager()->createQueryBuilder();
+        $query
+            ->select('t', 'p', 's', 'c', 'tt')
+            ->from('NakardLaboratoryTestBundle:Tests\Test', 't')
+            ->leftJoin('t.patient', 'p')
+            ->leftJoin('t.scheduler', 's')
+            ->leftJoin('t.labAssistant', 'c')
+            ->leftJoin('t.testType', 'tt')
+        ;
+
+        return $query->getQuery()->execute();
+    }
 }

@@ -231,4 +231,30 @@ class User extends BaseUser
     {
         return $this->getCredentials();
     }
+
+    /**
+     * Adds respective roles depending on user type
+     *
+     * @param string $type
+     */
+    public function addRespectiveRoles($type)
+    {
+        if ('admin' === $type) {
+            $this->addAllRoles();
+            return;
+        }
+
+        $this->addRole('ROLE_' . strtoupper($type));
+    }
+
+    /**
+     * Adds all roles, only for admins
+     */
+    protected function addAllRoles()
+    {
+        $this->addRole('ROLE_PATIENT');
+        $this->addRole('ROLE_ADMIN');
+        $this->addRole('ROLE_DOCTOR');
+        $this->addRole('ROLE_ASSISTANT');
+    }
 }

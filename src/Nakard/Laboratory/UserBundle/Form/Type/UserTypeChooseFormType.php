@@ -27,13 +27,14 @@ class UserTypeChooseFormType extends AbstractType
     {
         $builder
             ->add('type', 'choice', [
-                'choices'   =>  [
+                'choices'       =>  [
                     'admin'     =>  'System Administrator',
                     'doctor'    =>  'Doctor',
                     'assistant' =>  'Laboratory Assistant',
                     'patient'   =>  'Patient',
                 ],
-                'attr'  =>  ['id' => 'select']
+                'attr'          =>  ['id' => 'select'],
+                'empty_value'   =>  'Choose user type',
         ])
             ->add('next step', 'submit')
             ->setMethod('POST')
