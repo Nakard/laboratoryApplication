@@ -15,7 +15,10 @@ use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 use Nakard\Laboratory\TestBundle\Form\Type\TestPacketScheduleType;
 use Nakard\Laboratory\TestBundle\Form\Type\TestPerformPatientSelectType;
 use Nakard\Laboratory\TestBundle\Form\Type\TestPerformType;
+use Nakard\Laboratory\UserBundle\Entity\Users\Administrator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 use Nakard\Laboratory\TestBundle\Entity\Tests\TestPacket;
@@ -53,10 +56,12 @@ class TestController extends Controller
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_DOCTOR')")
      */
     public function scheduleAction(Request $request)
     {
-        $form = $this->createForm(new TestPacketScheduleType());
+        $form = $this->createForm(new TestPacketScheduleType($this->getUser()));
 
         $form->handleRequest($request);
 
@@ -69,11 +74,13 @@ class TestController extends Controller
             $packet = $data['packet'];
             /** @var Patient $patient */
             $patient = $data['patient'];
+            $doctor = $this->getDoctorForSchedule($form);
             $testTypes = $packet->getTestTypes();
             /** @var TestType $type */
             $manager = $this->getDoctrine()->getManager();
             foreach ($testTypes as $type) {
                 $test = new Test();
+                $test->setScheduler($doctor);
                 $test->setTestType($type);
                 $test->setPatient($patient);
                 $test->setLabAssistant($assistant);
@@ -140,5 +147,23 @@ class TestController extends Controller
             'NakardLaboratoryTestBundle:Test:perform.html.twig',
             ['form' => $form->createView(), 'testsIds' => $testsIds]
         );
+    }
+
+    /**
+     * Gets proper doctor assignment depending on logged user
+     *
+     * @param Form $form
+     *
+     * @return mixed
+     */
+    protected function getDoctorForSchedule(Form $form)
+    {
+        $user = $this->getUser();
+        // only docs and admins can schedule,  so if it isn't an admin it surely is a doc
+        if (!$user instanceof Administrator) {
+            return $user;
+        }
+
+        return $form->get('doctor')->getData();
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Nakard\Laboratory\TestBundle\Entity\Tests;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Mosquitto\Client;
 use Nakard\Laboratory\UserBundle\Entity\Users\Doctor;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
 use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
@@ -27,7 +25,7 @@ class Test
     protected $testType;
 
     /**
-     * @var string
+     * @var float
      */
     protected $value;
 
@@ -97,7 +95,7 @@ class Test
     /**
      * Set value
      *
-     * @param string $value
+     * @param float $value
      * @return Test
      */
     public function setValue($value)
@@ -110,7 +108,7 @@ class Test
     /**
      * Get value
      *
-     * @return string 
+     * @return float
      */
     public function getValue()
     {
@@ -120,10 +118,10 @@ class Test
     /**
      * Set scheduler
      *
-     * @param string $scheduler
+     * @param Doctor $scheduler
      * @return Test
      */
-    public function setScheduler($scheduler)
+    public function setScheduler(Doctor $scheduler)
     {
         $this->scheduler = $scheduler;
 
@@ -133,7 +131,7 @@ class Test
     /**
      * Get scheduler
      *
-     * @return string 
+     * @return Doctor
      */
     public function getScheduler()
     {
@@ -143,10 +141,10 @@ class Test
     /**
      * Set patient
      *
-     * @param string $patient
+     * @param Patient $patient
      * @return Test
      */
-    public function setPatient($patient)
+    public function setPatient(Patient $patient)
     {
         $this->patient = $patient;
 
@@ -156,7 +154,7 @@ class Test
     /**
      * Get patient
      *
-     * @return string 
+     * @return Patient
      */
     public function getPatient()
     {
@@ -166,10 +164,10 @@ class Test
     /**
      * Set labAssistant
      *
-     * @param string $labAssistant
+     * @param LaboratoryAssistant $labAssistant
      * @return Test
      */
-    public function setLabAssistant($labAssistant)
+    public function setLabAssistant(LaboratoryAssistant $labAssistant)
     {
         $this->labAssistant = $labAssistant;
 
@@ -179,7 +177,7 @@ class Test
     /**
      * Get labAssistant
      *
-     * @return string 
+     * @return LaboratoryAssistant
      */
     public function getLabAssistant()
     {
@@ -192,7 +190,7 @@ class Test
      * @param \DateTime $registerDate
      * @return Test
      */
-    public function setRegisterDate($registerDate)
+    public function setRegisterDate(\DateTime $registerDate)
     {
         $this->registerDate = $registerDate;
 
@@ -215,7 +213,7 @@ class Test
      * @param \DateTime $conductDate
      * @return Test
      */
-    public function setConductDate($conductDate)
+    public function setConductDate(\DateTime $conductDate)
     {
         $this->conductDate = $conductDate;
 
@@ -239,7 +237,7 @@ class Test
      *
      * @return Test
      */
-    public function setSample($sample)
+    public function setSample(Sample $sample)
     {
         $this->sample = $sample;
 

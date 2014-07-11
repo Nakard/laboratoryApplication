@@ -50,7 +50,6 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('nakard_laboratory_test_browse') }}">Browse tests</a></li>
-                        {% endif %}
                         {% if app.security.isGranted('ROLE_DOCTOR') or app.security.isGranted('ROLE_PATIENT') %}
                         <li>
                             <a href="{{ path('nakard_laboratory_test_schedule') }}">
@@ -85,10 +84,10 @@
                                 Perform tests
                             </a>
                         </li>
-
+                        {% endif %}
                     </ul>
-                    {% endif %}
                 </li>
+                {% endif %}
                 {% if
                     app.security.isGranted('ROLE_ADMIN') or
                     app.security.isGranted('ROLE_ASSISTANT') or

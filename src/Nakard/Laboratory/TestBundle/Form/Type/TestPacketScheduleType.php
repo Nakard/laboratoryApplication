@@ -10,6 +10,8 @@
 
 namespace Nakard\Laboratory\TestBundle\Form\Type;
 
+use Nakard\Laboratory\UserBundle\Entity\Users\Administrator;
+use Nakard\Laboratory\UserBundle\Entity\Users\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -20,6 +22,16 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class TestPacketScheduleType extends AbstractType
 {
+    /**
+     * Sets the active user
+     *
+     * @param User $user
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
     /**
      * @inheritdoc
      */
@@ -32,9 +44,13 @@ class TestPacketScheduleType extends AbstractType
             ])
             ->add('patient', 'entity', [
                 'class'     =>  'NakardLaboratoryUserBundle:Users\Patient',
-            ])
-            ->add('save', 'submit')
-        ;
+            ]);
+        if ($this->user instanceof Administrator) {
+            $builder->add('doctor', 'entity', [
+                'class'     =>  'NakardLaboratoryUserBundle:Users\Doctor',
+            ]);
+        }
+        $builder->add('save', 'submit');
     }
 
     /**
