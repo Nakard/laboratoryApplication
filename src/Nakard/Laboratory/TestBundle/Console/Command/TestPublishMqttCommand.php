@@ -46,13 +46,22 @@ class TestPublishMqttCommand extends Command implements ContainerAwareInterface
         $tests = $repository->findUnconducted();
         $mqtt = new Client();
         $mqtt->connect('localhost');
+        $index = 0;
         while ($mqtt->loop() == 0) {
+            $output->writeln($index);
+            if (100 <= ++$index) {
+                $tests = $repository->findUnconducted();
+                $output->writeln('Tests refreshed');
+                $index = 0;
+            }
+            if (empty($tests)) {
+                continue;
+            }
             $randTest = $tests[array_rand($tests)];
             $id = $randTest->getId();
             $randValue = rand(0, 10000) / 100;
             $message = $randValue;
             $mqtt->publish('test/' . $id . '/value', $message, 1, false);
-            $mqtt->loop();
             sleep(1);
         }
     }

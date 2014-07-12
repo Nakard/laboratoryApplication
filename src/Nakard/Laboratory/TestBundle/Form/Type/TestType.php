@@ -26,7 +26,11 @@ class TestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value')
+            ->add('value', 'number', [
+                'attr'  =>  [
+                    'class' =>  'no-change'
+                ]
+            ])
         ;
     }
 

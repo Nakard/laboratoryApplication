@@ -42,7 +42,7 @@ class TestController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('Nakard\Laboratory\TestBundle\Entity\Tests\Test');
 
-        $tests = $repository->findAllForIndexAction();
+        $tests = $repository->findAllForIndexAction($this->getUser());
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($tests, $page, 10);
@@ -108,19 +108,27 @@ class TestController extends Controller
      */
     public function performAction(Request $request, $assistantId)
     {
-        if (0 === $assistantId) {
+        if (0 === $assistantId && $this->getUser() instanceof Administrator) {
             $form = $this->createForm(new TestPerformPatientSelectType());
             return $this->render(
                 'NakardLaboratoryTestBundle:Test:assistant_select.html.twig',
                 ['form' => $form->createView()]
             );
         }
-        $assistant = $this
-            ->getDoctrine()
-            ->getRepository('Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant')
-            ->find($assistantId);
+
+        $assistant = $this->getUser() instanceof Administrator ?
+            $assistant = $this
+                ->getDoctrine()
+                ->getRepository('Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant')
+                ->find($assistantId) :
+            $this->getUser(); // this will be the logged lab assistant
         $repository = $this->getDoctrine()->getRepository('Nakard\Laboratory\TestBundle\Entity\Tests\Test');
         $toConductTests = new ArrayCollection($repository->findUnconducted($assistant));
+        if ($toConductTests->isEmpty()) {
+            $flash = $this->get('braincrafted_bootstrap.flash');
+            $flash->info('All assigned tests already performed, so enjoy your free time!');
+            return $this->redirect($this->generateUrl('nakard_laboratory_test_browse'));
+        }
         $testsIds = array_map(function (Test $elem) {
             return $elem->getId();
         }, $toConductTests->toArray());

@@ -4,8 +4,10 @@ namespace Nakard\Laboratory\TestBundle\Entity\Tests;
 
 use Doctrine\ORM\EntityRepository;
 use Nakard\Laboratory\SampleBundle\Entity\Samples\SampleType;
+use Nakard\Laboratory\UserBundle\Entity\Users\Doctor;
 use Nakard\Laboratory\UserBundle\Entity\Users\LaboratoryAssistant;
 use Nakard\Laboratory\UserBundle\Entity\Users\Patient;
+use Nakard\Laboratory\UserBundle\Entity\Users\User;
 
 /**
  * Class TestRepository
@@ -49,9 +51,12 @@ class TestRepository extends EntityRepository
     {
         $query = $this->getEntityManager()->createQueryBuilder();
         $query
-            ->select('t')
+            ->select('t','s', 'tt')
             ->from('NakardLaboratoryTestBundle:Tests\Test', 't')
-            ->where('t.conductDate IS NULL');
+            ->join('t.sample', 's')
+            ->join('t.testType', 'tt')
+            ->where('t.conductDate IS NULL')
+            ->andWhere('t.sample IS NOT NULL');
         if (!is_null($assistant)) {
             $query
                 ->andWhere('t.labAssistant = :assistant')
@@ -62,11 +67,13 @@ class TestRepository extends EntityRepository
     }
 
     /**
-     * Finds all tests for TestController index action
+     * Finds all tests for TestController index action, also dependant on querying user
+     *
+     * @param User $user
      *
      * @return mixed
      */
-    public function findAllForIndexAction()
+    public function findAllForIndexAction(User $user)
     {
         $query = $this->getEntityManager()->createQueryBuilder();
         $query
@@ -77,6 +84,13 @@ class TestRepository extends EntityRepository
             ->leftJoin('t.labAssistant', 'c')
             ->leftJoin('t.testType', 'tt')
         ;
+        if ($user instanceof Doctor) {
+            $query->where('t.scheduler = :scheduler')->setParameter('scheduler', $user);
+        } elseif ($user instanceof Patient) {
+            $query->where('t.patient = :patient')->setParameter('patient', $user);
+        } elseif ($user instanceof LaboratoryAssistant) {
+            $query->where('t.labAssistant = :assistant')->setParameter('assistant', $user);
+        }
 
         return $query->getQuery()->execute();
     }

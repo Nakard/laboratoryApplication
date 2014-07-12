@@ -17,19 +17,29 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        window.setInterval(function () {
-            $.post(
+        $(document).ready(function () {
+            $('input.no-change').bind('keyup keydown', function (e) {
+                e.preventDefault();
+            });
+            window.setInterval(function () {
+                $.post(
                     '{{ url('nakard_laboratory_test_fetch') }}',
                     {testsIds: [{{ testsIds|join(',') }}]},
                     function (data) {
                         for (key in data) {
-                            if(!data.hasOwnProperty(key)) {
+                            if (!data.hasOwnProperty(key)) {
                                 continue;
                             }
-                            $('#' + key).val(parseFloat(data[key]).toFixed(2));
+                            var value = parseFloat(data[key]);
+                            if (isNaN(value)) {
+                                continue;
+                            }
+                            $('#' + key).val(value.toFixed(2));
                         }
                     }
-            )
-        }, 5000);
+                )
+            }, 5000);
+        });
+
     </script>
 {% endblock %}
