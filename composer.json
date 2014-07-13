@@ -1,8 +1,8 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "nakard/laboratory-management-application",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "Medical Laboratory Management Application",
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
