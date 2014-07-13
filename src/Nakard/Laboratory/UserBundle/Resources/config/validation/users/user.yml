@@ -18,18 +18,16 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
                 min: 2
                 max: 255
             - Regex:
-                pattern: "/\d/"
-                match:   false
-                message: Your name cannot contain a number
+                pattern: "^[a-ząśżźćęńłó]+$/i"
+                message: Your first name can only contain letters
         lastName:
             - NotBlank: ~
             - Length:
                 min: 2
                 max: 255
             - Regex:
-                pattern: "/\d/"
-                match:   false
-                message: Your surname cannot contain a number
+                pattern: "^[a-ząśżźćęńłó]+$/i"
+                message: Your first name can only contain letters
         username:
             - NotBlank: ~
             - Length:
