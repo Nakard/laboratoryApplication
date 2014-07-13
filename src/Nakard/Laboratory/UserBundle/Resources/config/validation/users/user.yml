@@ -27,7 +27,7 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
                 max: 255
             - Regex:
                 pattern: "^[a-ząśżźćęńłó]+$/i"
-                message: Your first name can only contain letters
+                message: Your last name can only contain letters
         username:
             - NotBlank: ~
             - Length:
