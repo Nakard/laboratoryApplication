@@ -18,7 +18,6 @@ Nakard\Laboratory\UserBundle\Entity\Users\User:
         assistant: LaboratoryAssistant
         doctor: Doctor
         admin: Administrator
-        none: User
     fields:
         firstName:
             column: first_name

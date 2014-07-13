@@ -8,7 +8,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * Class User
  * @package Nakard\Laboratory\UserBundle\Entity\Users
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
     /**
      * @var integer
