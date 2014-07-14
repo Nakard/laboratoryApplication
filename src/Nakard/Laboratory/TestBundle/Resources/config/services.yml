@@ -1,5 +1,4 @@
 parameters:
-#    nakard_laboratory_test.example.class: Nakard\Laboratory\TestBundle\Example
     nakard_laboratory_test.mosquitto.class: Mosquitto\Client
     nakard_laboratory_test.mosquitto.broker: localhost
     nakard_laboratory_test.mosquitto.port: 1883
@@ -9,9 +8,6 @@ parameters:
 
 
 services:
-#    nakard_laboratory_test.example:
-#        class: %nakard_laboratory_test.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
     nakard_laboratory_test.mosquitto.subscriber:
         class: '%nakard_laboratory_test.mosquitto.class%'
         arguments: ['%nakard_laboratory_test.mosquitto.client.id%']
