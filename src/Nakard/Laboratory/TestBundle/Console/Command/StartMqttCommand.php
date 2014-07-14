@@ -44,7 +44,7 @@ class StartMqttCommand extends Command implements ContainerAwareInterface
         /** @var Client $redis */
         $redis = $this->container->get('nakard_laboratory_test.redis');
         $mqtt = $this->container->get('nakard_laboratory_test.mosquitto.subscriber');
-        $mqtt->onMessage(function (Message $message) use($redis, $output) {
+        $mqtt->onMessage(function (Message $message) use ($redis, $output) {
             preg_match('/\d+/', $message->topic, $matches);
             $id = $matches[0];
             $key = 'test:' . $id;
@@ -52,7 +52,7 @@ class StartMqttCommand extends Command implements ContainerAwareInterface
             $redis->hset($key, 'value', $message->payload);
             $redis->hset($key, 'timestamp', time());
         });
-        $mqtt->subscribe('#', 1);
+        $mqtt->subscribe('test/#', 1);
         $mqtt->loopForever();
     }
 
