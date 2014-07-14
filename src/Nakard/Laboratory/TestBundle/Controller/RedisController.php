@@ -21,6 +21,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RedisController extends Controller
 {
+    /**
+     * Fetches test results from Redis, this method is being called regularly while performing tests
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
     public function fetchAction(Request $request)
     {
         $testsIds = $request->get('testsIds');

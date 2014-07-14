@@ -17,6 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Nakard\Laboratory\TestBundle\Entity\Tests\TestRepository;
+use Nakard\Laboratory\TestBundle\Entity\Tests\Test;
 
 /**
  * Class TestPublishMqttCommand
@@ -57,11 +58,12 @@ class TestPublishMqttCommand extends Command implements ContainerAwareInterface
             if (empty($tests)) {
                 continue;
             }
+            /** @var Test $randTest */
             $randTest = $tests[array_rand($tests)];
-            $id = $randTest->getId();
+            $testId = $randTest->getId();
             $randValue = rand(0, 10000) / 100;
             $message = $randValue;
-            $mqtt->publish('test/' . $id . '/value', $message, 1, false);
+            $mqtt->publish('test/' . $testId . '/value', $message, 1, false);
             sleep(1);
         }
     }
